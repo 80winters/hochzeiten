@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Hochzeitsfotografie und Hochzeitsfilm von NEVERDALESS. Reportage statt Inszenierung, zwischen Bonn, Koblenz und der Eifel.">
+<meta property="og:title" content="Hochzeit | NEVERDALESS">
+<meta property="og:description" content="Hochzeitsfotografie und Hochzeitsfilm. Reportage statt Inszenierung.">
+<meta property="og:image" content="https://hochzeiten.neverdaless.com/img/hero.jpg">
+<meta name="theme-color" content="#f2f1ec">
+<title>Hochzeit | NEVERDALESS</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  --ground:#f2f1ec;
+  --card:#fbfaf6;
+  --line:#d6d3ca;
+  --ink:#121110;
+  --ink-2:#4b4944;
+  --ink-3:#8b8880;
+  --film:#121110;
+  --serif:"Instrument Serif","Times New Roman",Georgia,serif;
+  --mono:"Courier Prime","Courier New",Courier,monospace;
+  --gut:clamp(18px,5vw,64px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--ink);font-family:var(--mono);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;margin:0;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+h1,h2,h3{font-weight:400;margin:0;text-wrap:balance}
+em{font-style:italic}
+.bleed{padding-inline:var(--gut)}
+section{padding-block:clamp(56px,8vw,120px)}
+.mono{font-family:var(--mono)}
+.tiny{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+/* Abschnittskopf: Nummer + Titel */
+.head{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:18px;margin:0 0 clamp(28px,4vw,56px);padding-bottom:14px;border-bottom:1px solid var(--ink)}
+.head .no{font-family:var(--mono);font-size:13px;color:var(--ink-3);padding-bottom:.5em}
+.head h2{font-family:var(--serif);font-size:clamp(34px,5vw,72px);line-height:.95;letter-spacing:-.01em}
+.head .tiny{padding-bottom:.6em}
+@media(max-width:600px){.head{grid-template-columns:auto 1fr}.head .tiny{display:none}}
+
+/* Kopfzeile */
+.bar{display:flex;align-items:center;gap:14px;padding-block:14px;position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--ground) 90%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid transparent}
+.bar .logo{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto}
+.bar .logo svg{height:20px;width:auto}
+.bar .logo span{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.link{font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px}
+.link:hover{color:var(--ink-3);border-color:var(--ink-3)}
+.btn{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:13px 22px;border:1px solid var(--ink);background:var(--ink);color:var(--ground);transition:background .18s,color .18s}
+.btn:hover,.btn:focus-visible{background:transparent;color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--ground)}
+
+/* Einstieg */
+.intro{padding-block:clamp(40px,7vw,110px) clamp(32px,5vw,64px);position:relative}
+.intro .meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin-bottom:clamp(22px,3vw,40px)}
+.intro h1{font-family:var(--serif);font-size:clamp(52px,10.5vw,168px);line-height:.88;letter-spacing:-.025em}
+.intro h1 em{display:block;padding-left:clamp(0px,9vw,150px)}
+.intro .lead{display:grid;grid-template-columns:1fr;gap:22px;margin-top:clamp(28px,4vw,56px)}
+@media(min-width:900px){.intro .lead{grid-template-columns:1fr 1fr;align-items:end}.intro .lead > div{grid-column:2}}
+.intro .lead p{font-size:15.5px;color:var(--ink-2);max-width:48ch}
+
+/* Rahmen mit Bildwechsel im Sekundentakt */
+.flip{position:relative;max-width:1180px;margin:0 auto;aspect-ratio:3/2}
+.flip img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;visibility:hidden;transform:translate(var(--jx,0),var(--jy,0)) rotate(var(--jr,0));filter:drop-shadow(0 18px 26px rgba(18,17,16,.2))}
+.flip img.on{visibility:visible}
+
+/* Bilder: Collage */
+.collage{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(10px,1.8vw,26px);row-gap:clamp(8px,1.2vw,18px);align-items:start;counter-reset:n}
+.collage figure{margin:0;margin-top:var(--mt,0);grid-column:var(--c);grid-row:var(--r);cursor:zoom-in;position:relative;transform:rotate(var(--rot,0));transition:transform .3s ease}
+@media(hover:hover){.collage figure:hover{z-index:5;transform:rotate(0) scale(1.03)}}
+.collage img{width:100%;height:auto}
+.collage figure.frame img{filter:drop-shadow(0 10px 18px rgba(18,17,16,.16))}
+.collage figcaption{counter-increment:n;font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-top:4px;display:flex;gap:8px;text-transform:uppercase;letter-spacing:.04em}
+.collage figcaption::before{content:"[" counter(n,decimal-leading-zero) "]";color:var(--ink)}
+.collage figure.stack .strip{background:var(--film);padding:clamp(8px,1vw,14px);display:flex;flex-direction:column;gap:clamp(6px,.8vw,10px);box-shadow:0 14px 30px -18px rgba(18,17,16,.55)}
+.collage figure.stack img{border-radius:3px;filter:saturate(.95) contrast(1.04)}
+.collage figure.pair .two{display:grid;grid-template-columns:repeat(12,1fr)}
+.collage figure.pair img{grid-row:1;filter:drop-shadow(0 10px 18px rgba(18,17,16,.16))}
+.collage figure.pair img:first-child{grid-column:1/9}
+.collage figure.pair img:last-child{grid-column:8/13;margin-top:95%;transform:rotate(2.5deg);z-index:1;filter:drop-shadow(0 14px 22px rgba(18,17,16,.3))}
+@media(max-width:700px){
+  .collage{grid-template-columns:repeat(6,1fr);row-gap:0}
+  .collage figure{grid-column:var(--mc);grid-row:auto;margin-top:-14px}
+  .collage figure:first-child{margin-top:0}
+  }
+
+/* Ablauf: Karteiliste */
+.steps li{display:grid;grid-template-columns:56px 1fr;gap:6px 18px;padding:22px 0;border-bottom:1px solid var(--line)}
+@media(min-width:900px){.steps li{grid-template-columns:80px minmax(220px,1fr) 1.4fr;align-items:baseline}}
+@media(hover:hover){.steps li{transform-origin:left center}.steps li:hover{scale:1.05}}
+.steps .n{font-size:13px;color:var(--ink-3)}
+.steps h3{font-family:var(--serif);font-size:clamp(28px,3vw,42px);line-height:1}
+.steps p{color:var(--ink-2);grid-column:2;max-width:56ch}
+@media(min-width:900px){.steps p{grid-column:auto}}
+
+/* Begleitung: Karteikarten */
+.cards{display:grid;grid-template-columns:1fr;gap:clamp(18px,2.4vw,32px)}
+@media(min-width:900px){.cards{grid-template-columns:repeat(3,1fr);align-items:start}}
+.card{background:var(--card);border:1px solid var(--line);padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:14px;box-shadow:0 0 16px rgba(18,17,16,.07),0 18px 30px -24px rgba(18,17,16,.35);transform:rotate(var(--rot,0));position:relative}
+@media(hover:hover){.card:hover{scale:1.05;z-index:2;box-shadow:0 0 22px rgba(18,17,16,.1),0 24px 36px -24px rgba(18,17,16,.4)}}
+@media(min-width:900px){.card:nth-child(2){margin-top:40px}.card:nth-child(3){margin-top:16px}}
+.card .top{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:10px}
+.card h3{font-family:var(--serif);font-size:clamp(36px,3.6vw,52px);line-height:.95}
+.card h3 em{display:block;font-size:.5em;color:var(--ink-3);margin-top:.3em}
+.card p{color:var(--ink-2)}
+.card ul{display:grid;gap:4px;padding-top:12px;border-top:1px dashed var(--line)}
+.card li::before{content:"— "}
+.fine{margin-top:clamp(32px,4vw,56px);display:grid;grid-template-columns:1fr;gap:12px 48px;color:var(--ink-2)}
+@media(min-width:800px){.fine{grid-template-columns:1fr 1fr}}
+.fine b{color:var(--ink)}
+
+/* Wir */
+.us{display:grid;grid-template-columns:1fr;gap:clamp(36px,5vw,80px);align-items:center}
+@media(min-width:900px){.us{grid-template-columns:.8fr 1fr}}
+.print{background:#fff;padding:12px 12px 56px;box-shadow:0 20px 34px -22px rgba(18,17,16,.5);transform:rotate(-2.5deg);max-width:380px;justify-self:center;position:relative;margin:0}
+.print img{aspect-ratio:3/4;object-fit:cover;width:100%;height:auto}
+.print figcaption{position:absolute;left:14px;right:12px;bottom:18px;font-family:var(--mono);font-weight:700;font-size:15px;line-height:1;color:var(--ink)}
+.us .txt{display:flex;flex-direction:column;gap:18px;max-width:54ch}
+.us h3{font-family:var(--serif);font-size:clamp(30px,3.4vw,48px);line-height:1}
+.us .txt p{color:var(--ink-2)}
+.us .txt p b{color:var(--ink)}
+.us .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* Kontakt */
+.contact{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.contact h2{font-family:var(--serif);font-size:clamp(52px,10vw,160px);line-height:.88;letter-spacing:-.025em}
+.contact h2 em{display:block;padding-left:clamp(0px,9vw,150px)}
+.contact p{color:var(--ink-2);max-width:52ch}
+.contact .lines{display:flex;flex-wrap:wrap;gap:10px 28px}
+
+footer{border-top:1px solid var(--ink);padding-block:22px;display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(18,17,16,.96);display:none;align-items:center;justify-content:center;padding:clamp(12px,3vw,40px)}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:100%;object-fit:contain}
+.lb button{position:absolute;background:none;border:0;color:#f2f1ec;font:400 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:14px;cursor:pointer;opacity:.75}
+.lb button:hover{opacity:1}
+.lb .x{top:8px;right:8px}
+.lb .p{left:4px;top:50%;transform:translateY(-50%);font-size:28px}
+.lb .nx{right:4px;top:50%;transform:translateY(-50%);font-size:28px}
+
+.rise{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.6,.2,1)}
+.rise.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rise{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+/* Pinnwand: Bilder erscheinen in drei kurzen Stop-Motion-Stopps */
+.collage.pinwall figure{opacity:0}
+.collage.pinwall figure.pinned{opacity:1;animation:pin .24s steps(1,end) backwards;animation-delay:var(--d,0s)}
+@keyframes pin{
+  0%{opacity:.45;transform:translateY(-5px) rotate(calc(var(--rot,0deg) + 1deg))}
+  50%{opacity:.8;transform:translateY(-1px) rotate(calc(var(--rot,0deg) - .3deg))}
+  100%{opacity:1;transform:rotate(var(--rot,0deg))}
+}
+@media(prefers-reduced-motion:reduce){.collage.pinwall figure{opacity:1;animation:none}}
+/* Schreibmaschine: Zeichen erscheinen nacheinander */
+.tw .ch{visibility:hidden}
+.tw .ch.v{visibility:visible}
+.tw .caret{display:inline-block;width:.06em;min-width:2px;height:.9em;background:currentColor;vertical-align:-.08em;margin-left:.04em;animation:blink .5s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+/* Weiches Scrollen (Lenis, wie Messeseite, nur Maus/Trackpad) */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+</style>
+</head>
+<body>
+
+<header class="bar bleed">
+  <a class="logo" href="https://www.neverdaless.com" target="_blank" rel="noopener" aria-label="Neverdaless">
+    <svg viewBox="0 0 45 22.5219" aria-hidden="true" focusable="false"><path fill="currentColor" d="M 0.0000 0.0000 L 30.2026 0.0000 L 33.1694 7.8178 A 0.2492 0.2492 0 0 0 33.6678 7.8178 L 33.0658 5.7872 L 33.0658 0.0000 L 45.0000 0.0000 L 45.0000 22.5219 L 31.3255 22.5219 L 28.1940 14.1677 A 0.2443 0.2443 0 0 0 27.7054 14.1677 L 28.3343 16.2939 L 28.3343 22.5219 L 0.0000 22.5219 Z"/></svg>
+    <span>Hochzeit — Archiv</span>
+  </a>
+  <a class="link" href="#kontakt">Anfragen</a>
+</header>
+
+<section class="intro bleed">
+  <div class="meta tiny"><span>[N° 01]</span><span>Hochzeitsfotografie &amp; Hochzeitsfilm</span><span>Bonn · Koblenz · Eifel</span></div>
+  <h1>Euer Tag. <em>Ohne Regie.</em></h1>
+  <div class="lead">
+    <div>
+      <p>Wir begleiten eure Hochzeit vom Ja-Wort bis zur letzten Runde auf der Tanzfläche. Wir halten fest, was passiert, statt es zu inszenieren: die Blicke, das Lachen und die Momente dazwischen.</p>
+    </div>
+  </div>
+</section>
+
+<div class="bleed"><div class="flip" id="flip" aria-label="Bilder im Sekundentakt">
+    <img src="img/flip/01.webp" alt="Brautpaar geht Hand in Hand am Teich entlang" class="on" fetchpriority="high">
+    <img src="img/flip/02.webp" alt="Brautpaar während der Trauung, schwarzweiß" loading="eager">
+    <img src="img/flip/03.webp" alt="Brautpaar vor dem geschmückten Tor" loading="eager">
+    <img src="img/flip/04.webp" alt="Gäste lachen zwischen Seifenblasen" loading="eager">
+    <img src="img/flip/05.webp" alt="Kuss unter der Trauerweide" loading="eager">
+    <img src="img/flip/06.webp" alt="Der erste Blick am Teich" loading="eager">
+    <img src="img/flip/07.webp" alt="Hände mit Eheringen auf dem Brautstrauß" loading="eager">
+    <img src="img/flip/08.webp" alt="Gäste springen ausgelassen vor dem Schloss" loading="eager">
+    <img src="img/flip/09.webp" alt="Brautpaar an der Backsteinwand" loading="eager">
+    <img src="img/flip/10.webp" alt="Brautpaar in der Abenddämmerung vor dem Schloss" loading="eager">
+    <img src="img/flip/11.webp" alt="Handkuss bei der Feier" loading="eager">
+    <img src="img/flip/12.webp" alt="Eröffnungstanz vor den Gästen" loading="eager">
+    <img src="img/flip/13.webp" alt="Die Braut wirft den Brautstrauß" loading="eager">
+    <img src="img/flip/14.webp" alt="Unterschrift im Standesamt" loading="eager">
+    <img src="img/flip/15.webp" alt="Brautpaar ausgelassen auf der Tanzfläche" loading="eager">
+  </div></div>
+
+<section id="bilder">
+  <div class="bleed"><div class="head"><span class="no">[02]</span><h2>Bilder vom <em>ganzen Tag</em></h2><span class="tiny">Reportage, 2025–2026</span></div></div>
+  <div class="bleed"><div class="collage">
+    <figure class="frame" style="--c:1/6;--r:1;--mt:0;--mc:1/7;--rot:-1deg"><img src="img/26f.webp" alt="Der erste Blick am Teich" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:5/8;--r:1;--mt:clamp(28px,4.86vw,70px);--mc:1/4;--rot:2deg"><img src="img/06f.webp" alt="Kuss unter der Trauerweide" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:8/13;--r:1;--mt:clamp(8px,1.39vw,20px);--mc:3/7;--rot:.5deg"><img src="img/25f.webp" alt="Brautpaar während der Trauung, schwarzweiß" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:1/6;--r:2;--mt:clamp(-50px,-3.47vw,-20px);--mc:1/7;--rot:1deg"><img src="img/04f.webp" alt="Einzug des Brautpaars unter Applaus" loading="lazy" width="1600" height="900"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:6/10;--r:2;--mt:clamp(12px,2.08vw,30px);--mc:1/5;--rot:-1.5deg"><img src="img/09f.webp" alt="Brautpaar vor dem geschmückten Tor" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:9/13;--r:2;--mt:clamp(-40px,-2.78vw,-16px);--mc:2/7;--rot:1deg"><img src="img/01f.webp" alt="Eheringe in der Schatulle" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:1/4;--r:3;--mt:clamp(-40px,-2.78vw,-16px);--mc:1/4;--rot:-1.5deg"><img src="img/03f.webp" alt="Unterschrift im Standesamt" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:4/7;--r:3;--mt:clamp(12px,2.08vw,30px);--mc:4/7;--rot:1deg"><img src="img/08f.webp" alt="Bräutigam hebt die Braut hoch" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:7/10;--r:3;--mt:clamp(-20px,-1.39vw,-8px);--mc:1/4;--rot:-1deg"><img src="img/11f.webp" alt="Brautpaar in der Abenddämmerung vor dem Schloss" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:10/13;--r:3;--mt:clamp(28px,4.86vw,70px);--mc:4/7;--rot:2deg"><img src="img/02f.webp" alt="Braut am Tisch im Standesamt" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:1/4;--r:4;--mt:clamp(-50px,-3.47vw,-20px);--mc:1/4;--rot:1deg"><img src="img/07f.webp" alt="Brautpaar auf dem Weg unter der Weide" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
+    <figure class="pair" style="--c:4/9;--r:4;--mt:0;--mc:4/7;--rot:0deg">
+      <div class="two">
+        <img src="img/31f.webp" alt="Brautpaar an der Backsteinwand" loading="lazy" width="1200" height="1600">
+        <img src="img/32f.webp" alt="Detail: Brautstrauß in der Hand der Braut" loading="lazy" width="1200" height="1600">
+      </div>
+      <figcaption></figcaption>
+    </figure>
+    <figure class="frame" style="--c:9/13;--r:4;--mt:clamp(16px,2.78vw,40px);--mc:1/6;--rot:-1deg"><img src="img/27f.webp" alt="Hände mit Eheringen auf dem Brautstrauß" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:1/7;--r:5;--mt:clamp(-50px,-3.47vw,-20px);--mc:1/7;--rot:.5deg"><img src="img/12f.webp" alt="Hochzeitsgesellschaft am Teich" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:7/10;--r:5;--mt:clamp(-70px,-4.86vw,-28px);--mc:1/4;--rot:-2deg"><img src="img/28f.webp" alt="Gäste springen ausgelassen vor dem Schloss" loading="lazy" width="1200" height="1600"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:9/13;--r:5;--mt:clamp(16px,2.78vw,40px);--mc:4/7;--rot:1.5deg"><img src="img/14f.webp" alt="Gartenfeier am Nachmittag" loading="lazy" width="1600" height="1066"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:1/5;--r:6;--mt:clamp(-30px,-2.08vw,-12px);--mc:1/5;--rot:-1deg"><img src="img/15f.webp" alt="Lachende Gäste am Tisch" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:4/9;--r:6;--mt:clamp(16px,2.78vw,40px);--mc:2/7;--rot:1deg"><img src="img/33f.webp" alt="Gäste lachen zwischen Seifenblasen" loading="lazy" width="1600" height="1066"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:9/13;--r:6;--mt:clamp(-30px,-2.08vw,-12px);--mc:1/6;--rot:-1.5deg"><img src="img/16f.webp" alt="Handkuss bei der Feier, das Weinglas in der Hand" loading="lazy" width="1600" height="1066"><figcaption></figcaption></figure>
+    <figure class="stack" style="--c:1/4;--r:7;--mt:clamp(-20px,-1.39vw,-8px);--mc:1/4;--rot:.6deg">
+      <div class="strip"><img src="img/29.jpg" alt="Die Braut wirft den Brautstrauß" loading="lazy" width="1600" height="1067"><img src="img/30.jpg" alt="Jubel nach dem Fangen des Brautstraußes" loading="lazy" width="1600" height="1067"></div>
+      <figcaption></figcaption>
+    </figure>
+    <figure class="frame" style="--c:4/7;--r:7;--mt:clamp(20px,3.47vw,50px);--mc:4/7;--rot:-1.5deg"><img src="img/34f.webp" alt="Bräutigam beim Eröffnungstanz" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
+    <figure class="stack" style="--c:7/10;--r:7;--mt:clamp(-10px,-0.69vw,-4px);--mc:1/4;--rot:-.6deg">
+      <div class="strip"><img src="img/36.jpg" alt="Brautpaar beim Eröffnungstanz vor den Gästen" loading="lazy" width="1600" height="1067"><img src="img/35.jpg" alt="Drehung beim Eröffnungstanz" loading="lazy" width="1600" height="1067"></div>
+      <figcaption></figcaption>
+    </figure>
+    <figure class="stack" style="--c:2/6;--r:8;--mt:clamp(-90px,-6.25vw,-36px);--mc:1/5;--rot:-.5deg">
+      <div class="strip"><img src="img/18.jpg" alt="Eröffnungstanz, die Gäste stehen im Kreis" loading="lazy" width="1600" height="1067"><img src="img/19.jpg" alt="Drehung beim Eröffnungstanz" loading="lazy" width="1600" height="1067"><img src="img/20.jpg" alt="Brautpaar tanzt, der Rock fliegt" loading="lazy" width="1600" height="1067"></div>
+      <figcaption></figcaption>
+    </figure>
+    <figure class="stack" style="--c:10/13;--r:7;--mt:clamp(24px,4.17vw,60px);--mc:4/7;--rot:.6deg">
+      <div class="strip"><img src="img/21.jpg" alt="Brautpaar ausgelassen auf der Tanzfläche" loading="lazy" width="1600" height="900"><img src="img/22.jpg" alt="Gäste tanzen im Lichtschein" loading="lazy" width="1600" height="900"><img src="img/24.jpg" alt="Wilde Party zu später Stunde" loading="lazy" width="1600" height="1067"></div>
+      <figcaption></figcaption>
+    </figure>
+    <figure class="frame" style="--c:6/12;--r:8;--mt:clamp(8px,1.39vw,20px);--mc:2/7;--rot:1deg"><img src="img/23f.webp" alt="Gäste feiern Arm in Arm" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+  </div></div>
+</section>
+
+<section class="bleed" id="ablauf" style="padding-top:0">
+  <div class="head"><span class="no">[03]</span><h2>So läuft <em>es ab</em></h2><span class="tiny">Vier Schritte</span></div>
+  <ol class="steps">
+    <li class="rise"><span class="n">— 01</span><h3>Kennenlernen</h3><p>Wir telefonieren oder treffen uns. Ihr erzählt uns vom Ablauf, von den Menschen, die euch wichtig sind, und von euren Wünschen.</p></li>
+    <li class="rise"><span class="n">— 02</span><h3>Euer Tag</h3><p>Wir sind dort, wo es passiert, ohne im Weg zu stehen. Gruppen- und Paarfotos halten wir kurz, damit ihr Zeit für eure Gäste habt.</p></li>
+    <li class="rise"><span class="n">— 03</span><h3>Auswahl &amp; Bearbeitung</h3><p>Wir wählen die besten Bilder aus und bearbeiten sie in unserem Look: natürlich, warm und mit Tiefe.</p></li>
+    <li class="rise"><span class="n">— 04</span><h3>Online-Galerie</h3><p>Ihr bekommt eine Galerie, in der ihr und eure Gäste die Bilder ansehen, teilen und herunterladen könnt.</p></li>
+  </ol>
+</section>
+
+<section class="bleed" id="begleitung" style="padding-top:0">
+  <div class="head"><span class="no">[04]</span><h2>Begleitung <em>nach eurem Tag</em></h2><span class="tiny">Ohne Stoppuhr</span></div>
+  <div class="cards">
+    <div class="card rise" style="--rot:-.8deg"><div class="top tiny"><span>Karte 1/3</span><span>Paket</span></div><h3>Ja-Wort <em>Trauung &amp; Empfang</em></h3><p>Für Hochzeiten, deren Kern am frühen Nachmittag liegt.</p><ul><li>Trauung</li><li>Sektempfang</li><li>Paar- &amp; Gruppenfotos</li></ul></div>
+    <div class="card rise" style="--rot:.6deg"><div class="top tiny"><span>Karte 2/3</span><span>Paket</span></div><h3>Bis zum Abend <em>mit Feier</em></h3><p>Alles aus „Ja-Wort“, dazu der Nachmittag und der Beginn der Feier.</p><ul><li>Kaffee &amp; Kuchen</li><li>Reden &amp; Programm</li><li>Feier bis in den Abend</li></ul></div>
+    <div class="card rise" style="--rot:-.4deg"><div class="top tiny"><span>Karte 3/3</span><span>Paket</span></div><h3>Bis zur Party <em>der ganze Tag</em></h3><p>Vom Ja-Wort bis tief in den Abend.</p><ul><li>Dinner</li><li>Eröffnungstanz</li><li>Party</li></ul></div>
+  </div>
+  <div class="fine">
+    <p><b>Wir rechnen nicht auf die Stunde ab.</b> Ihr wählt, bis zu welchem Moment wir dabei sein sollen. Passt keines genau, stimmen wir das Paket auf euren Tag ab. Wenn sich etwas verschiebt, bleiben wir entspannt.</p>
+    <p><b>Immer dabei:</b> Bildauswahl und Bearbeitung, Online-Galerie und Anfahrt in der Region. Foto und Film gibt es einzeln oder zusammen. <b>Keine Anzahlung.</b> Den Preis nennen wir euch im persönlichen Angebot.</p>
+  </div>
+</section>
+
+<section class="bleed" id="wir" style="padding-top:0">
+  <div class="head"><span class="no">[05]</span><h2>Wir sind <em>NEVERDALESS</em></h2><span class="tiny">Foto &amp; Film aus einer Hand</span></div>
+  <div class="us">
+    <figure class="print rise"><img src="img/richard.jpg" alt="Richard, euer Ansprechpartner bei NEVERDALESS" loading="lazy" width="900" height="1200"><figcaption>Richard, euer Kontakt</figcaption></figure>
+    <div class="txt">
+      <h3>Ein Team, <em>eine Bildsprache.</em></h3>
+      <p>NEVERDALESS ist ein Studio für Film und Fotografie. <b>Foto und Film kommen bei uns aus einem Team</b>, deshalb passen beide am Ende zusammen.</p>
+      <p>Sonst sind wir für Unternehmen, Messen und Events unterwegs. Diesen Blick nehmen wir mit auf Hochzeiten: genau hinsehen, nichts stellen und im richtigen Moment da sein.</p>
+      <p>Wir sind zwischen Bonn, Koblenz und der Eifel zu Hause und fahren gern weiter.</p>
+      <div class="row"><a class="btn ghost" href="https://www.neverdaless.com/aboutndl" target="_blank" rel="noopener">Das Team</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="bleed" id="kontakt" style="border-top:1px solid var(--ink)">
+  <div class="contact">
+    <p class="tiny">[06] Kontakt</p>
+    <h2>Erzählt uns <em>von eurem Tag.</em></h2>
+    <p>Schreibt uns euer Datum, die Location und wie lange wir dabei sein sollen. Ihr bekommt ein persönliches Angebot.</p>
+    <a class="btn" href="mailto:richard@neverdaless.com?subject=Hochzeitsanfrage">Anfrage senden</a>
+    <div class="lines">
+      <a class="link" href="mailto:richard@neverdaless.com">richard@neverdaless.com</a>
+      <a class="link" href="tel:+4917620766446">+49 176 2076 6446</a>
+    </div>
+  </div>
+</section>
+
+<footer class="bleed">
+  <span>© 2026 NEVERDALESS eGbR</span>
+  <span><a href="https://www.neverdaless.com" target="_blank" rel="noopener">neverdaless.com</a> &nbsp;·&nbsp; <a href="https://www.neverdaless.com/contactus-1" target="_blank" rel="noopener">Impressum</a> &nbsp;·&nbsp; <a href="https://messe.neverdaless.com/datenschutz/" target="_blank" rel="noopener">Datenschutz</a></span>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Bildansicht">
+  <img alt="">
+  <button class="x" type="button" aria-label="Schließen">Schließen</button>
+  <button class="p" type="button" aria-label="Vorheriges Bild">‹</button>
+  <button class="nx" type="button" aria-label="Nächstes Bild">›</button>
+</div>
+
+<script src="js/lenis.min.js"></script>
+<script>
+(function(){
+  var lb=document.getElementById('lb'),lbImg=lb.querySelector('img'),list=Array.prototype.slice.call(document.querySelectorAll('#bilder img')),i=0;
+  function show(n){i=(n+list.length)%list.length;lbImg.src=list[i].src;lbImg.alt=list[i].alt}
+  function open(im){show(list.indexOf(im));lb.classList.add('on');document.body.style.overflow='hidden'}
+  function close(){lb.classList.remove('on');document.body.style.overflow=''}
+  document.querySelectorAll('#bilder .collage figure').forEach(function(f){f.addEventListener('click',function(e){open(e.target.closest('img')||f.querySelector('img'))})});
+  lb.querySelector('.x').onclick=function(){close()};
+  lb.querySelector('.p').onclick=function(e){e.stopPropagation();show(i-1)};
+  lb.querySelector('.nx').onclick=function(e){e.stopPropagation();show(i+1)};
+  lb.addEventListener('click',function(e){if(e.target===lb)close()});
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});
+  (function(){
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce||!window.Lenis||!window.matchMedia('(pointer: fine)').matches)return;
+    var lenis=new Lenis({lerp:0.085,wheelMultiplier:1});
+    requestAnimationFrame(function raf(t){lenis.raf(t);requestAnimationFrame(raf)});
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var el=document.querySelector(a.getAttribute('href'));if(!el)return;e.preventDefault();lenis.scrollTo(el,{offset:-60,duration:1.3})})});
+    var o=open;open=function(im){lenis.stop();o(im)};var c=close;close=function(){lenis.start();c()};
+  })();
+  (function(){var f=document.getElementById('flip');if(!f)return;var im=f.querySelectorAll('img'),k=0,t;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    function run(){clearInterval(t);t=setInterval(function(){im[k].classList.remove('on');k=(k+1)%im.length;var e=im[k],R=function(m){return ((Math.random()*2-1)*m).toFixed(2)};e.style.setProperty('--jx',R(1.2)+'%');e.style.setProperty('--jy',R(1.4)+'%');e.style.setProperty('--jr',R(1.3)+'deg');e.classList.add('on')},1000)}
+    run();document.addEventListener('visibilitychange',function(){document.hidden?clearInterval(t):run()});
+  })();
+  (function(){var c=document.querySelector('#bilder .collage');if(!c||!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    c.classList.add('pinwall');var q=0,tq;
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;var f=en.target;f.style.setProperty('--d',(q++*0.1)+'s');f.classList.add('pinned');io.unobserve(f);clearTimeout(tq);tq=setTimeout(function(){q=0},200)})},{threshold:.2,rootMargin:'0px 0px -8% 0px'});
+    c.querySelectorAll('figure').forEach(function(f){io.observe(f)});
+  })();
+  (function(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+    var els=document.querySelectorAll('.intro h1, .head h2, .intro .meta, .contact h2');
+    function prep(el){el.setAttribute('aria-label',el.textContent.replace(/\s+/g,' ').trim());var list=[];
+      (function walk(n){[].slice.call(n.childNodes).forEach(function(c){
+        if(c.nodeType===3){var f=document.createDocumentFragment();c.textContent.split('').forEach(function(t){var sp=document.createElement('span');sp.className='ch';sp.setAttribute('aria-hidden','true');sp.textContent=t;f.appendChild(sp);list.push(sp)});c.parentNode.replaceChild(f,c)}
+        else if(c.nodeType===1)walk(c)})})(el);
+      el.classList.add('tw');return list}
+    function type(el,list){var car=document.createElement('span');car.className='caret';car.setAttribute('aria-hidden','true');var i=0,sp=Math.max(36,Math.min(90,1800/list.length));
+      (function step(){if(i<list.length){list[i].classList.add('v');list[i].after(car);i++;setTimeout(step,list[i-1].textContent===' '?sp*.5:sp)}else setTimeout(function(){car.remove()},900)})()}
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;io.unobserve(en.target);type(en.target,en.target._ch)})},{threshold:.6});
+    els.forEach(function(el){el._ch=prep(el);io.observe(el)});
+  })();
+  var els=document.querySelectorAll('.rise');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.15});
+    els.forEach(function(el){io.observe(el)});
+  } else els.forEach(function(el){el.classList.add('in')});
+})();
+</script>
+</body>
+</html>
