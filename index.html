@@ -179,12 +179,12 @@ footer a:hover{color:var(--ink)}
 .tw .caret{display:inline-block;width:.06em;min-width:2px;height:.9em;background:currentColor;vertical-align:-.08em;margin-left:.04em;animation:blink .5s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 /* Dunkelrote, analog-körnige Flächen */
-.grain{background-color:#3a0a0d;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='.33 .33 .33 0 0  .33 .33 .33 0 0  .33 .33 .33 0 0  0 0 0 0 .75'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(120% 90% at 30% 20%,rgba(120,24,24,.3),transparent 60%),radial-gradient(100% 100% at 100% 100%,rgba(0,0,0,.45),transparent 60%);background-blend-mode:overlay,normal,normal;color:#f2e6e0}
-.collage .swatch{grid-column:var(--c);grid-row:var(--r);margin-top:var(--mt,0);aspect-ratio:4/5;transform:rotate(var(--rot,0));box-shadow:0 14px 26px -18px rgba(18,17,16,.55);display:flex;align-items:flex-end;padding:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em}
-@media(max-width:700px){.collage .swatch{grid-column:var(--mc);grid-row:auto;margin-top:-14px}}
+.grain{background-color:#2f1a19;background-image:url(img/grain.png);background-size:480px 480px;image-rendering:pixelated;background-blend-mode:normal;position:relative;isolation:isolate;color:#efe4df}
+.grain::before{content:"";position:absolute;inset:0;background:inherit;background-image:url(img/grain.png);background-size:480px 480px;image-rendering:pixelated;mix-blend-mode:overlay;opacity:.55;z-index:-1}
+.grain{background-image:none}
 #kontakt.grain{border-top:0}
 #kontakt.grain .contact p,#kontakt.grain .tiny{color:#d9c3bd}
-#kontakt.grain .btn{background:#f2e6e0;color:#4a0f12;border-color:#f2e6e0}
+#kontakt.grain .btn{background:#f2e6e0;color:#2f1a19;border-color:#f2e6e0}
 #kontakt.grain .btn:hover{background:transparent;color:#f2e6e0}
 #kontakt.grain .link{border-color:#f2e6e0}
 /* Weiches Scrollen (Lenis, wie Messeseite, nur Maus/Trackpad) */
@@ -272,7 +272,6 @@ html.lenis,html.lenis body{height:auto}
       <div class="strip"><img src="img/21.jpg" alt="Brautpaar ausgelassen auf der Tanzfläche" loading="lazy" width="1600" height="900"><img src="img/22.jpg" alt="Gäste tanzen im Lichtschein" loading="lazy" width="1600" height="900"><img src="img/24.jpg" alt="Wilde Party zu später Stunde" loading="lazy" width="1600" height="1067"></div>
       <figcaption></figcaption>
     </figure>
-    <div class="swatch grain" style="--c:2/5;--r:8;--mt:clamp(-36px,-2.5vw,-14px);--mc:1/3;--rot:-1.5deg" aria-hidden="true"><span>[ — ]</span></div>
     <figure class="frame" style="--c:6/12;--r:8;--mt:clamp(8px,1.39vw,20px);--mc:2/7;--rot:1deg"><img src="img/23f.webp" alt="Gäste feiern Arm in Arm" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
   </div></div>
 </section>
