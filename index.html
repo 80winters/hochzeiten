@@ -67,7 +67,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .btn{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:13px 22px;border:1px solid var(--ink);background:var(--ink);color:var(--ground);transition:background .18s,color .18s}
 .btn:hover,.btn:focus-visible{background:transparent;color:var(--ink)}
 .btn.ghost{background:transparent;color:var(--ink)}
-.btn.ghost:hover{background:var(--ink);color:var(--ground)}
+.btn.ghost:hover{background:color-mix(in srgb,var(--ink) 9%,transparent)}
 
 /* Einstieg */
 .intro{padding-block:clamp(40px,7vw,110px) clamp(32px,5vw,64px);position:relative}
@@ -186,13 +186,16 @@ footer a:hover{color:var(--ink)}
 #kontakt.grain .btn:hover{background:transparent;color:#f2e6e0}
 #kontakt.grain .link{border-color:#f2e6e0}
 /* Galerie öffnen */
-.opener{width:100%;display:flex;align-items:center;gap:18px;background:transparent;border:1px solid var(--ink);color:var(--ink);font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:18px 22px;cursor:pointer;text-align:left}
-.opener .o-n{color:var(--ink-3);margin-right:auto}
-.opener .o-a{font-size:16px}
+.opener-wrap{display:flex;justify-content:center}
+.opener{display:inline-flex;align-items:center;gap:14px;background:color-mix(in srgb,var(--ink) 6%,transparent);border:0;color:var(--ink);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:14px 22px;cursor:pointer;transform:rotate(-.6deg)}
+.opener .o-n{color:var(--ink-3)}
+.opener .o-a{font-size:14px}
 .opener span{white-space:nowrap}
-@media(hover:hover){.opener:hover{background:var(--ink);color:var(--ground)}.opener:hover .o-n{color:var(--ground)}}
-@media(max-width:520px){.opener{gap:12px;padding:16px;font-size:12px}.opener .o-n{display:none}.opener .o-t{margin-right:auto}}
-.opener[aria-expanded="true"]{margin-bottom:clamp(28px,4vw,56px)}
+@media(hover:hover){.opener:hover{background:color-mix(in srgb,var(--ink) 11%,transparent);transform:rotate(-.6deg) scale(1.05)}}
+@media(max-width:520px){.opener{gap:10px;padding:13px 18px;font-size:11px}.opener .o-n{display:none}}
+.opener[aria-expanded="true"] .o-n{display:none}
+#bilder.offen .collage{margin-bottom:clamp(8px,1.2vw,18px)}
+#bilder.offen #sammlung .collage{margin-bottom:clamp(28px,4vw,56px)}
 .opener[aria-expanded="true"] .o-a{transform:rotate(180deg)}
 .intro .sig{letter-spacing:0;display:inline-block;white-space:nowrap;vertical-align:.28em;margin-left:-.03em;transform:rotate(3deg);line-height:0}
 .intro .nw{white-space:nowrap}
@@ -225,7 +228,7 @@ footer a:hover{color:var(--ink)}
 .field h2,.field .us h3{color:var(--fg)}
 .field .card,.field .card h3{color:var(--ink)}
 .field .btn.ghost{color:var(--fg);border-color:var(--fg)}
-.field .btn.ghost:hover{background:var(--fg);color:#1a2422}
+.field .btn.ghost:hover{background:color-mix(in srgb,var(--fg) 14%,transparent)}
 /* Karten leicht durchscheinend */
 .field .card{background:rgba(251,250,246,.8);-webkit-backdrop-filter:blur(8px) saturate(1.1);backdrop-filter:blur(8px) saturate(1.1);border-color:rgba(255,255,255,.35)}
 /* Einstieg zweispaltig auf breiten Bildschirmen */
@@ -316,7 +319,7 @@ html.lenis,html.lenis body{height:auto}
       <figcaption></figcaption>
     </figure>
   </div></div>
-  <div class="bleed"><button class="opener" type="button" aria-expanded="false" aria-controls="sammlung"><span class="o-t">Den ganzen Tag ansehen</span><span class="o-n">[16 weitere Bilder]</span><span class="o-a" aria-hidden="true">↓</span></button></div>
+  <div class="bleed opener-wrap"><button class="opener" type="button" aria-expanded="false" aria-controls="sammlung"><span class="o-t">Den ganzen Tag ansehen</span><span class="o-n">[16 weitere Bilder]</span><span class="o-a" aria-hidden="true">↓</span></button></div>
   <div class="bleed" id="sammlung" hidden><div class="collage">
     <figure class="frame" style="--c:1/6;--r:1;--mt:0;--mc:1/7;--rot:-1deg"><img src="img/01f.webp" alt="Eheringe in der Schatulle" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
     <figure class="frame" style="--c:5/8;--r:1;--mt:clamp(28px,4.86vw,70px);--mc:1/4;--rot:2deg"><img src="img/03f.webp" alt="Unterschrift im Standesamt" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
@@ -446,7 +449,7 @@ html.lenis,html.lenis body{height:auto}
     els.forEach(function(el){el._ch=prep(el);io.observe(el)});
   })();
   (function(){var b=document.querySelector('.opener'),g=document.getElementById('sammlung');if(!b||!g)return;
-    b.addEventListener('click',function(){var o=g.hidden;g.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');b.querySelector('.o-t').textContent=o?'Weniger zeigen':'Den ganzen Tag ansehen';
+    b.addEventListener('click',function(){var o=g.hidden;g.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');b.querySelector('.o-t').textContent=o?'Weniger zeigen':'Den ganzen Tag ansehen';var w=b.parentNode,bi=document.getElementById('bilder');bi.classList.toggle('offen',o);if(o)g.after(w);else g.before(w);
       if(!o){var r=document.getElementById('bilder').getBoundingClientRect();if(r.top<0)window.scrollTo({top:window.scrollY+r.top-60})}
       window.dispatchEvent(new Event('resize'));if(o&&window.__fixCaps)setTimeout(window.__fixCaps,50)});
   })();
