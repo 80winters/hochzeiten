@@ -56,6 +56,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .head .no{font-family:var(--mono);font-size:13px;color:var(--ink-3);padding-bottom:.5em}
 .head h2{font-family:var(--serif);font-size:clamp(34px,5vw,72px);line-height:.95;letter-spacing:0}
 .head .tiny{padding-bottom:.6em}
+.head-lbl h2{font-family:var(--mono);font-size:13px;line-height:1;text-transform:uppercase;letter-spacing:.08em;padding-bottom:.5em}
+.head-lbl{margin-bottom:clamp(24px,3vw,40px)}
 @media(max-width:600px){.head{grid-template-columns:auto 1fr}.head .tiny{display:none}}
 
 /* Kopfzeile */
@@ -303,7 +305,7 @@ html.lenis,html.lenis body{height:auto}
 </section>
 
 <section id="bilder">
-  <div class="bleed"><div class="head"><span class="no">[02]</span><h2>Bilder vom <em>ganzen Tag</em></h2><span class="tiny">Reportage</span></div></div>
+  <div class="bleed"><div class="head head-lbl"><span class="no">[02]</span><h2>Archiv</h2></div></div>
   <div class="bleed"><div class="collage">
     <figure class="frame" style="--c:1/6;--r:1;--mt:0;--mc:1/7;--rot:-1deg"><img src="img/26f.webp" alt="Der erste Blick am Teich" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
     <figure class="frame" style="--c:6/10;--r:1;--mt:clamp(24px,4.17vw,60px);--mc:1/5;--rot:1deg"><img src="img/25f.webp" alt="Brautpaar während der Trauung, schwarzweiß" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
