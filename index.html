@@ -293,6 +293,12 @@ html.lenis,html.lenis body{height:auto}
 .faq details.is-open summary::after{transform:rotate(180deg)}
 #fragen.fixbg::before{top:calc(var(--bgh) * -.17);bottom:auto;height:var(--bgh)}
 .contact .ctas{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Auffälligere Anfrage-Knöpfe */
+.bar .top-cta{background:var(--ink);color:var(--ground);border:0;padding:9px 14px 8px;transform:rotate(-1.5deg);display:inline-block;box-shadow:0 6px 14px -8px rgba(0,0,0,.5)}
+.intro.bg-hero .cta{background:#f2efe8;color:var(--ink)!important;border:0!important;text-shadow:none!important;padding:12px 18px 11px;transform:rotate(1deg);display:inline-block;box-shadow:0 10px 30px rgba(0,0,0,.3);clip-path:polygon(0 4%,22% 0,51% 3%,78% 0,100% 3%,99% 96%,74% 100%,47% 97%,21% 100%,1% 97%);font-weight:700}
+.intro.bg-hero .cta::after{content:" →"}
+@media(hover:hover){.bar .top-cta:hover{transform:rotate(-1.5deg) scale(1.06)}.intro.bg-hero .cta:hover{transform:rotate(1deg) scale(1.06)}}
 </style>
 </head>
 <body>
@@ -302,7 +308,7 @@ html.lenis,html.lenis body{height:auto}
     <svg viewBox="0 0 45 22.5219" aria-hidden="true" focusable="false"><path fill="currentColor" d="M 0.0000 0.0000 L 30.2026 0.0000 L 33.1694 7.8178 A 0.2492 0.2492 0 0 0 33.6678 7.8178 L 33.0658 5.7872 L 33.0658 0.0000 L 45.0000 0.0000 L 45.0000 22.5219 L 31.3255 22.5219 L 28.1940 14.1677 A 0.2443 0.2443 0 0 0 27.7054 14.1677 L 28.3343 16.2939 L 28.3343 22.5219 L 0.0000 22.5219 Z"/></svg>
     <span>Hochzeiten</span>
   </a>
-  <a class="link" href="#kontakt">Anfragen</a>
+  <a class="link top-cta" href="#kontakt">Anfragen</a>
 </header>
 
 <section class="intro bleed bgimg bg-hero"><div class="hbg" aria-hidden="true"><i class="on" data-n="1"></i><i data-n="2"></i><i data-n="3"></i><i data-n="4"></i><i data-n="5"></i></div>
