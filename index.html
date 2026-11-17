@@ -208,14 +208,14 @@ footer a:hover{color:var(--ink)}
 }
 /* Hintergründe aus Bilddetails (Testfassung) */
 .bgimg{background-size:cover;background-position:center;background-repeat:no-repeat}
-.bg-strauss{background-color:#e6e2dc;background-image:linear-gradient(rgba(242,241,236,.38),rgba(242,241,236,.38)),url(img/detail-strauss.jpg)}
+.bg-strauss{background-color:#3a3540;background-image:linear-gradient(rgba(14,12,16,.22),rgba(14,12,16,.22)),url(img/detail-strauss.jpg)}
 .bg-rosen{background-color:#2a1416;background-image:linear-gradient(rgba(14,8,9,.32),rgba(14,8,9,.32)),url(img/detail-rosen.jpg)}
 .bg-glas{background-color:#1a2422;background-image:linear-gradient(rgba(8,12,11,.3),rgba(8,12,11,.3)),url(img/detail-glas.jpg)}
-@media(max-width:700px){.bg-strauss{background-image:linear-gradient(rgba(242,241,236,.42),rgba(242,241,236,.42)),url(img/detail-strauss-m.jpg)}.bg-rosen{background-image:linear-gradient(rgba(14,8,9,.36),rgba(14,8,9,.36)),url(img/detail-rosen-m.jpg)}.bg-glas{background-image:linear-gradient(rgba(8,12,11,.34),rgba(8,12,11,.34)),url(img/detail-glas-m.jpg)}}
-.bg-strauss .steps p,.bg-strauss .steps h3{color:var(--ink);text-shadow:0 0 14px rgba(242,241,236,.9),0 0 3px rgba(242,241,236,.8)}
-.bg-strauss .head h2,.bg-strauss .head .no,.bg-strauss .head .tiny,.bg-strauss .steps .n{text-shadow:0 0 14px rgba(242,241,236,.9)}
-.bg-strauss .head .no,.bg-strauss .head .tiny,.bg-strauss .steps .n{color:var(--ink-2)}
-.bg-strauss .steps li{border-color:rgba(18,17,16,.25)}
+@media(max-width:700px){.bg-strauss{background-image:linear-gradient(rgba(14,12,16,.28),rgba(14,12,16,.28)),url(img/detail-strauss-m.jpg)}.bg-rosen{background-image:linear-gradient(rgba(14,8,9,.36),rgba(14,8,9,.36)),url(img/detail-rosen-m.jpg)}.bg-glas{background-image:linear-gradient(rgba(8,12,11,.34),rgba(8,12,11,.34)),url(img/detail-glas-m.jpg)}}
+.bg-strauss .steps li{border-color:rgba(241,235,226,.25)}
+.bg-strauss .steps p,.bg-strauss .steps h3{color:var(--fg)}
+.bg-strauss .steps .n{color:var(--fg3)}
+.bg-strauss .steps{text-shadow:0 1px 12px rgba(0,0,0,.5),0 0 2px rgba(0,0,0,.35)}
 .field{--fg:#f1ebe2;--fg2:#ddd4c7;--fg3:#b3a99b;color:var(--fg)}
 .field .head{border-color:var(--fg)}
 .field .head .no,.field .head .tiny{color:var(--fg3)}
@@ -318,7 +318,7 @@ html.lenis,html.lenis body{height:auto}
   </div></div>
 </section>
 
-<section class="bleed bgimg bg-strauss" id="ablauf">
+<section class="bleed bgimg field bg-strauss" id="ablauf">
   <div class="head"><span class="no">[03]</span><h2>So läuft <em>es ab</em></h2><span class="tiny">Vier Schritte</span></div>
   <ol class="steps">
     <li class="rise"><span class="n">— 01</span><h3>Kennenlernen</h3><p>Wir telefonieren oder treffen uns. Ihr erzählt uns vom Ablauf, von den Menschen, die euch wichtig sind, und von euren Wünschen.</p></li>
