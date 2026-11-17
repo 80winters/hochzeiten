@@ -288,7 +288,10 @@ html.lenis,html.lenis body{height:auto}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";font-family:var(--mono);font-size:20px;flex:none;opacity:.85}
 .faq details[open] summary::after{content:"–"}
-.faq details p{color:var(--fg);max-width:60ch;padding:0 0 22px}
+.faq details p{color:var(--fg);max-width:60ch;padding:0 0 22px;box-sizing:border-box;overflow:hidden}
+.faq summary::after{transition:transform .35s ease}
+.faq details.is-open summary::after{transform:rotate(180deg)}
+#fragen.fixbg::before{top:calc(var(--bgh) * -.17);bottom:auto;height:var(--bgh)}
 .contact .ctas{display:flex;flex-wrap:wrap;gap:12px}
 </style>
 </head>
@@ -383,7 +386,7 @@ html.lenis,html.lenis body{height:auto}
   <ul class="fine">
       <li><b>Keine Stoppuhr.</b> Ihr wählt, bis zu welchem Moment wir bleiben.</li>
       <li><b>Immer dabei:</b> Auswahl, Bearbeitung, Online-Galerie, Anfahrt in der Region.</li>
-      <li><b>Eure Galerie</b> nach 1–3 Wochen, je nach Umfang.</li>
+      <li><b>Eure Galerie</b> nach wenigen Tagen bis zu einem Monat, je nach Umfang.</li>
       <li><b>Foto, Film oder beides.</b></li>
       <li><b>Gern auch früher:</b> beim Getting Ready oder für ein paar Minuten zu zweit vor der Trauung.</li>
       <li><b>Keine Anzahlung.</b></li>
@@ -394,7 +397,7 @@ html.lenis,html.lenis body{height:auto}
 <section class="bleed bgimg field bg-wurf" id="fragen">
   <div class="head"><span class="no">[05]</span><h2>Kurze <em>Fragen</em></h2><span class="tiny">Zum Aufklappen</span></div>
   <div class="faq">
-    <details><summary>Wann bekommen wir die Bilder?</summary><p>Nach 1–3 Wochen, je nach Umfang. Ihr bekommt sie in einer Online-Galerie zum Ansehen, Teilen und Herunterladen.</p></details>
+    <details><summary>Wann bekommen wir die Bilder?</summary><p>Für die Nachbearbeitung brauchen wir je nach Umfang wenige Tage bis zu einem Monat. Dann bekommt ihr alles in einer Online-Galerie zum Ansehen, Teilen und Herunterladen.</p></details>
     <details><summary>Kommt ihr auch weiter weg?</summary><p>Ja, gern. In der Region ist die Anfahrt im Paket schon drin. Bei weiteren Wegen steht ein Aufschlag für die Fahrt und, falls nötig, eine Übernachtung offen in eurem Angebot.</p></details>
     <details><summary>Und wenn es regnet?</summary><p>Dann suchen wir geschützte Ecken und arbeiten mit dem Licht, das da ist. Gefeiert wird ja trotzdem, und oft entstehen genau dann die schönsten Bilder.</p></details>
     <details><summary>Bekommen wir auch unbearbeitete Bilder?</summary><p>Ihr bekommt eine sorgfältige Auswahl, jedes Bild fertig bearbeitet. Unbearbeitete Dateien sind nicht Teil der Pakete.</p></details>
@@ -536,6 +539,17 @@ html.lenis,html.lenis body{height:auto}
   mq.addEventListener('change',function(){ls.forEach(set)});
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   setInterval(function(){ls[k].classList.remove('on');k=(k+1)%ls.length;ls[k].classList.add('on')},4000);
+})();
+</script>
+<script>
+(function(){var sec=document.getElementById('fragen');if(!sec)return;var ds=[].slice.call(sec.querySelectorAll('.faq details'));
+  function measure(){var was=ds.map(function(d){return d.open});ds.forEach(function(d){d.open=true});var h=sec.offsetHeight;ds.forEach(function(d,i){d.open=was[i]});sec.style.setProperty('--bgh',Math.round(h*1.4)+'px');sec.classList.add('fixbg')}
+  measure();window.addEventListener('resize',function(){clearTimeout(window.__fq);window.__fq=setTimeout(measure,200)});
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  ds.forEach(function(d){var s=d.querySelector('summary'),p=d.querySelector('p');
+    s.addEventListener('click',function(e){e.preventDefault();if(d._a)return;
+      if(d.open){d.classList.remove('is-open');if(reduce){d.open=false;return}var h=p.offsetHeight;d._a=p.animate([{height:h+'px',opacity:1},{height:'0px',opacity:0}],{duration:380,easing:'cubic-bezier(.4,0,.2,1)'});setTimeout(function(){d.open=false;d._a=null},380)}
+      else{d.open=true;d.classList.add('is-open');if(reduce)return;var h=p.offsetHeight;d._a=p.animate([{height:'0px',opacity:0},{height:h+'px',opacity:1}],{duration:420,easing:'cubic-bezier(.4,0,.2,1)'});setTimeout(function(){d._a=null},420)}})});
 })();
 </script>
 </body>
