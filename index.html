@@ -539,7 +539,7 @@ html.lenis,html.lenis body{height:auto}
 </script>
 <script>
 (function(){var h=document.querySelector('.hbg');if(!h)return;var ls=[].slice.call(h.children),mq=matchMedia('(max-width:700px)'),k=0;
-  function src(n){return 'img/hero-'+n+(mq.matches?'-m':'')+'.jpg?v=4'}
+  function src(n){return 'img/hero-'+n+(mq.matches?'-m':'')+'.jpg?v=5'}
   function set(i){i.style.backgroundImage='url('+src(i.dataset.n)+')'}
   set(ls[0]);window.addEventListener('load',function(){ls.slice(1).forEach(set)});
   mq.addEventListener('change',function(){ls.forEach(set)});
