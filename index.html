@@ -79,7 +79,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .intro .lead p{font-size:15.5px;color:var(--ink-2);max-width:48ch}
 
 /* Rahmen mit Bildwechsel im Sekundentakt */
-.flip{position:relative;max-width:1180px;margin:0 auto;aspect-ratio:3/2}
+.flip{position:relative;width:min(100%,1180px,calc((100svh - 190px) * 1.5));margin:0 auto;aspect-ratio:3/2}
 .flip img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;visibility:hidden;transform:translate(var(--jx,0),var(--jy,0)) rotate(var(--jr,0));filter:drop-shadow(0 18px 26px rgba(18,17,16,.2))}
 .flip img.on{visibility:visible}
 
@@ -295,7 +295,7 @@ html.lenis,html.lenis body{height:auto}
 </section>
 
 <section class="bleed" id="begleitung" style="padding-top:0">
-  <div class="head"><span class="no">[04]</span><h2>Begleitung <em>nach eurem Tag</em></h2><span class="tiny">Ohne Stoppuhr</span></div>
+  <div class="head"><span class="no">[04]</span><h2>Pakete <em>für euren Tag</em></h2><span class="tiny">Ohne Stoppuhr</span></div>
   <div class="cards">
     <div class="card rise" style="--rot:-.8deg"><div class="top tiny"><span>Paket 1/3</span></div><h3>Ja-Wort <em>Trauung &amp; Empfang</em></h3><p>Für Hochzeiten, deren Kern am frühen Nachmittag liegt.</p><ul><li>Trauung</li><li>Sektempfang</li><li>Paar- &amp; Gruppenfotos</li></ul></div>
     <div class="card rise" style="--rot:.6deg"><div class="top tiny"><span>Paket 2/3</span></div><h3>Bis zum Abend <em>mit Feier</em></h3><p>Alles aus „Ja-Wort“, dazu der Nachmittag und der Beginn der Feier.</p><ul><li>Kaffee &amp; Kuchen</li><li>Reden &amp; Programm</li><li>Feier bis in den Abend</li></ul></div>
