@@ -124,12 +124,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .card h3 em{display:block;font-size:.5em;color:var(--ink-3);margin-top:.3em}
 .card p{color:var(--ink-2)}
 .card ul{display:grid;gap:4px;padding-top:12px;border-top:1px dashed var(--line)}
-.card li{padding-left:1.25em;position:relative}.card li::before{content:"×";position:absolute;left:0;top:-.05em;font-family:var(--mono);font-weight:400;opacity:.55}
+.card li{padding-left:1.25em;position:relative}.card li::before{content:"";position:absolute;left:0;top:.42em;width:.5em;height:.75em;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12'%3E%3Cpolyline points='2,1.5 6,6 2,10.5' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12'%3E%3Cpolyline points='2,1.5 6,6 2,10.5' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.6}
 .fine{margin-top:clamp(32px,4vw,56px);display:grid;grid-template-columns:1fr;gap:12px 48px;color:var(--ink-2)}
 @media(min-width:800px){.fine{grid-template-columns:1fr 1fr}}
 .fine b{color:var(--ink);font-weight:600}
 .fine li{padding-left:1.25em;position:relative}
-.fine li::before{content:"×";position:absolute;left:0;top:-.05em;font-family:var(--mono);opacity:.7}
+.fine li::before{content:"";position:absolute;left:0;top:.42em;width:.5em;height:.75em;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12'%3E%3Cpolyline points='2,1.5 6,6 2,10.5' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12'%3E%3Cpolyline points='2,1.5 6,6 2,10.5' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.75}
 @media(min-width:1100px){.fine{grid-template-columns:1fr 1fr 1fr}}
 b{font-weight:600}
 
@@ -463,7 +463,17 @@ html.lenis,html.lenis body{height:auto}
   (function(){var b=document.querySelector('.opener'),g=document.getElementById('sammlung');if(!b||!g)return;
     b.addEventListener('click',function(){var o=g.hidden;g.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');b.querySelector('.o-t').textContent=o?'Weniger':'Mehr Bilder';var w=b.parentNode,bi=document.getElementById('bilder');bi.classList.toggle('offen',o);if(o)g.after(w);else g.before(w);
       if(!o){var r=document.getElementById('bilder').getBoundingClientRect();if(r.top<0)window.scrollTo({top:window.scrollY+r.top-60})}
-      window.dispatchEvent(new Event('resize'));if(o&&window.__fixCaps)setTimeout(window.__fixCaps,50)});
+      if(o){requestAnimationFrame(pack)}else{unpack()}window.dispatchEvent(new Event('resize'));if(o&&window.__fixCaps)setTimeout(window.__fixCaps,80)});
+    var first=document.querySelector('#bilder .collage'),sec=g.querySelector('.collage');
+    function unpack(){sec.querySelectorAll(':scope > figure').forEach(function(f){f.style.top=''});sec.style.marginBottom=''}
+    function pack(){unpack();if(g.hidden||innerWidth<=700)return;var placed=[];
+      first.querySelectorAll(':scope > figure').forEach(function(f){var r=f.getBoundingClientRect();placed.push({l:r.left,r:r.right,b:r.bottom})});
+      var oldB=0,newB=0;sec.querySelectorAll(':scope > figure').forEach(function(f){var r=f.getBoundingClientRect(),w=r.width*.15,l=r.left+w,rr=r.right-w,mb=-1e9;
+        placed.forEach(function(p){if(p.l<rr&&p.r>l&&p.b>mb)mb=p.b});var sh=mb>-1e9?Math.max(0,r.top-(mb+28)):0;if(sh>4)f.style.top=(-sh)+'px';
+        placed.push({l:r.left,r:r.right,b:r.bottom-sh});oldB=Math.max(oldB,r.bottom);newB=Math.max(newB,r.bottom-sh)});
+      if(oldB-newB>4)sec.style.marginBottom='calc(clamp(28px,4vw,56px) - '+(oldB-newB)+'px)';if(window.__fixCaps)window.__fixCaps()}
+    g.querySelectorAll('img').forEach(function(i){i.addEventListener('load',function(){clearTimeout(window.__pk);window.__pk=setTimeout(pack,100)})});
+    window.addEventListener('resize',function(){clearTimeout(window.__pr);window.__pr=setTimeout(pack,200)});
   })();
   (function(){
     if(!window.matchMedia('(hover: none)').matches||!('IntersectionObserver' in window))return;
