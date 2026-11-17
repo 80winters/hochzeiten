@@ -32,12 +32,13 @@
   --ink-3:#8b8880;
   --film:#121110;
   --serif:"Instrument Serif","Times New Roman",Georgia,serif;
+  --sans:"Inter",-apple-system,"Helvetica Neue",Arial,sans-serif;
   --mono:"Courier Prime","Courier New",Courier,monospace;
   --gut:clamp(18px,5vw,64px);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--ground);color:var(--ink);font-family:var(--mono);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;margin:0;overflow-x:hidden}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;margin:0;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit}
 p{margin:0}
@@ -126,7 +127,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .card li::before{content:"— "}
 .fine{margin-top:clamp(32px,4vw,56px);display:grid;grid-template-columns:1fr;gap:12px 48px;color:var(--ink-2)}
 @media(min-width:800px){.fine{grid-template-columns:1fr 1fr}}
-.fine b{color:var(--ink)}
+.fine b{color:var(--ink);font-weight:600}
+.fine li{padding-left:1.1em;text-indent:-1.1em}
+.fine li::before{content:"— "}
+@media(min-width:1100px){.fine{grid-template-columns:1fr 1fr 1fr}}
+b{font-weight:600}
 
 /* Wir */
 .us{display:grid;grid-template-columns:1fr;gap:clamp(36px,5vw,80px);align-items:center}
@@ -244,7 +249,7 @@ footer a:hover{color:var(--ink)}
 @media(max-width:999px){.intro .o-pic{margin-top:clamp(32px,6vw,56px)}}
 #bilder{padding-top:clamp(28px,4vw,64px);counter-reset:n}
 #bilder .collage{margin-bottom:clamp(28px,4vw,56px)}
-.card li.std{font-weight:700;margin-top:6px}
+.card li.std{font-weight:600;margin-top:6px}
 /* Parallax: Hintergründe liegen „weiter weg“ und laufen langsamer mit */
 .bgimg{position:relative;overflow:hidden;isolation:isolate}
 .bgimg::before{content:"";position:absolute;left:0;right:0;top:-25%;bottom:-25%;background:inherit;background-size:cover;background-position:center;background-repeat:no-repeat;transform:translate3d(0,var(--py,0px),0);z-index:-1;will-change:transform;pointer-events:none}
@@ -345,24 +350,28 @@ html.lenis,html.lenis body{height:auto}
 <section class="bleed bgimg field bg-strauss" id="ablauf">
   <div class="head"><span class="no">[03]</span><h2>So läuft <em>es ab</em></h2><span class="tiny">Vier Schritte</span></div>
   <ol class="steps">
-    <li class="rise"><span class="n">— 01</span><h3>Kennenlernen</h3><p>Wir telefonieren oder treffen uns. Ihr erzählt uns vom Ablauf, von den Menschen, die euch wichtig sind, und von euren Wünschen.</p></li>
-    <li class="rise"><span class="n">— 02</span><h3>Euer Tag</h3><p>Wir sind dort, wo es passiert, ohne im Weg zu stehen. Gruppen- und Paarfotos halten wir kurz, damit ihr Zeit für eure Gäste habt.</p></li>
-    <li class="rise"><span class="n">— 03</span><h3>Auswahl &amp; Bearbeitung</h3><p>Wir wählen die besten Bilder aus, schneiden euren Film und bearbeiten alles in unserem Look: natürlich, warm und mit Tiefe.</p></li>
-    <li class="rise"><span class="n">— 04</span><h3>Online-Galerie</h3><p>Ihr bekommt eine Online-Galerie mit euren Bildern und eurem Film, die ihr und eure Gäste ansehen, teilen und herunterladen könnt.</p></li>
+    <li class="rise"><span class="n">— 01</span><h3>Kennenlernen</h3><p>Wir telefonieren oder treffen uns, und ihr erzählt uns von eurem Tag.</p></li>
+    <li class="rise"><span class="n">— 02</span><h3>Euer Tag</h3><p>Wir sind dabei, ohne im Weg zu stehen. Gruppenfotos halten wir kurz.</p></li>
+    <li class="rise"><span class="n">— 03</span><h3>Auswahl &amp; Bearbeitung</h3><p>Wir wählen aus, schneiden den Film und bearbeiten alles natürlich und warm.</p></li>
+    <li class="rise"><span class="n">— 04</span><h3>Online-Galerie</h3><p>Bilder und Film zum Ansehen, Teilen und Herunterladen, auch für eure Gäste.</p></li>
   </ol>
 </section>
 
 <section class="bleed bgimg field bg-rosen" id="begleitung">
   <div class="head"><span class="no">[04]</span><h2>Pakete <em>für euren Tag</em></h2><span class="tiny">Ohne Stoppuhr</span></div>
   <div class="cards">
-    <div class="card rise" style="--rot:-.8deg"><div class="top tiny"><span>Paket 1/3</span></div><h3>Ja-Wort <em>Trauung &amp; Empfang</em></h3><p>Für Hochzeiten, deren Kern am frühen Nachmittag liegt.</p><ul><li>Trauung</li><li>Sektempfang</li><li>Paar- &amp; Gruppenfotos</li><li class="std">ca. 5 Stunden vor Ort</li></ul></div>
-    <div class="card rise" style="--rot:.6deg"><div class="top tiny"><span>Paket 2/3</span></div><h3>Bis zum Abend <em>mit Feier</em></h3><p>Alles aus „Ja-Wort“, dazu der Nachmittag und der Beginn der Feier.</p><ul><li>Kaffee &amp; Kuchen</li><li>Reden &amp; Programm</li><li>Feier bis in den Abend</li><li class="std">ca. 7 Stunden vor Ort</li></ul></div>
-    <div class="card rise" style="--rot:-.4deg"><div class="top tiny"><span>Paket 3/3</span></div><h3>Bis zur Party <em>der ganze Tag</em></h3><p>Vom Ja-Wort bis tief in den Abend.</p><ul><li>Dinner</li><li>Eröffnungstanz</li><li>Party</li><li class="std">ca. 10 Stunden vor Ort</li></ul></div>
+    <div class="card rise" style="--rot:-.8deg"><div class="top tiny"><span>Paket 1/3</span></div><h3>Ja-Wort <em>Trauung &amp; Empfang</em></h3><ul><li>Trauung</li><li>Sektempfang</li><li>Paar- &amp; Gruppenfotos</li><li class="std">ca. 5 Stunden vor Ort</li></ul></div>
+    <div class="card rise" style="--rot:.6deg"><div class="top tiny"><span>Paket 2/3</span></div><h3>Bis zum Abend <em>mit Feier</em></h3><ul><li>Kaffee &amp; Kuchen</li><li>Reden &amp; Programm</li><li>Feier bis in den Abend</li><li class="std">ca. 7 Stunden vor Ort</li></ul></div>
+    <div class="card rise" style="--rot:-.4deg"><div class="top tiny"><span>Paket 3/3</span></div><h3>Bis zur Party <em>der ganze Tag</em></h3><ul><li>Dinner</li><li>Eröffnungstanz</li><li>Party</li><li class="std">ca. 10 Stunden vor Ort</li></ul></div>
   </div>
-  <div class="fine">
-    <p><b>Wir rechnen nicht auf die Stunde ab.</b> Ihr wählt, bis zu welchem Moment wir dabei sein sollen. Passt keines genau, stimmen wir das Paket auf euren Tag ab. Wenn sich etwas verschiebt, bleiben wir entspannt.</p>
-    <p><b>Immer dabei:</b> Auswahl, Bearbeitung und Schnitt, Online-Galerie und Anfahrt in der Region. Foto und Film gibt es einzeln oder zusammen. Und wenn ihr mögt, sind wir schon früher da: beim Getting Ready oder für ein paar ruhige Minuten zu zweit vor der Trauung. <b>Keine Anzahlung.</b> Den Preis nennen wir euch im persönlichen Angebot.</p>
-  </div>
+  <ul class="fine">
+      <li><b>Keine Stoppuhr.</b> Ihr wählt, bis zu welchem Moment wir bleiben.</li>
+      <li><b>Immer dabei:</b> Auswahl, Bearbeitung, Online-Galerie, Anfahrt.</li>
+      <li><b>Foto, Film oder beides.</b></li>
+      <li><b>Gern auch früher:</b> beim Getting Ready oder für ein paar Minuten zu zweit vor der Trauung.</li>
+      <li><b>Keine Anzahlung.</b></li>
+      <li><b>Euren Preis</b> bekommt ihr im persönlichen Angebot.</li>
+    </ul>
 </section>
 
 <section class="bleed bgimg field bg-glas" id="wir">
@@ -371,9 +380,9 @@ html.lenis,html.lenis body{height:auto}
     <figure class="print rise"><img src="img/richard.jpg" alt="Richard, euer Ansprechpartner bei NEVERDALESS" loading="lazy" width="900" height="1200"><figcaption>Richard, euer Kontakt</figcaption></figure>
     <div class="txt">
       <h3>Ein Team, <em>eine Bildsprache.</em></h3>
-      <p>NEVERDALESS ist ein Studio für Film und Fotografie. <b>Foto und Film kommen bei uns aus einem Team</b>, deshalb passen beide am Ende zusammen.</p>
-      <p>Sonst sind wir für Unternehmen, Messen und Events unterwegs. Diesen Blick nehmen wir mit auf Hochzeiten: genau hinsehen, nichts stellen und im richtigen Moment da sein.</p>
-      <p>Wir sind zwischen Bonn, Koblenz und der Eifel zu Hause und fahren gern weiter.</p>
+      <p><b>Foto und Film aus einem Team</b>, deshalb passt am Ende beides zusammen.</p>
+      <p>Sonst sind wir für Unternehmen und Events unterwegs. Auf Hochzeiten heißt das: genau hinsehen, nichts stellen.</p>
+      
       <div class="row"><a class="btn ghost" href="https://www.neverdaless.com/aboutndl" target="_blank" rel="noopener">Das Team</a></div>
     </div>
   </div>
