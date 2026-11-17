@@ -228,6 +228,17 @@ footer a:hover{color:var(--ink)}
 .field .btn.ghost:hover{background:var(--fg);color:#1a2422}
 /* Karten leicht durchscheinend */
 .field .card{background:rgba(251,250,246,.8);-webkit-backdrop-filter:blur(8px) saturate(1.1);backdrop-filter:blur(8px) saturate(1.1);border-color:rgba(255,255,255,.35)}
+/* Einstieg zweispaltig auf breiten Bildschirmen */
+.intro .cta{display:inline-block;margin-top:22px}
+@media(min-width:1000px){
+  .intro{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:clamp(32px,4vw,80px);align-items:center;min-height:calc(100svh - 64px);padding-block:clamp(24px,3vw,48px)}
+  .intro h1{font-size:clamp(52px,7.1vw,136px)}
+  .intro h1 em{padding-left:clamp(0px,2.4vw,56px)}
+  .intro .lead{grid-template-columns:1fr}
+  .intro .lead > div{grid-column:1}
+  .intro .o-pic .flip{width:min(100%,calc((100svh - 140px) * 1.5));transform:rotate(1.2deg)}
+}
+@media(max-width:999px){.intro .o-pic{margin-top:clamp(32px,6vw,56px)}}
 /* Weiches Scrollen (Lenis, wie Messeseite, nur Maus/Trackpad) */
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
@@ -245,16 +256,17 @@ html.lenis,html.lenis body{height:auto}
 </header>
 
 <section class="intro bleed">
+<div class="o-text">
   <div class="meta tiny"><span>[N° 01]</span><span>Hochzeitsfotografie &amp; Hochzeitsfilm</span><span>Bonn · Koblenz · Eifel</span></div>
   <h1>Euer Tag. <em>Ehrlich <span class="nw">erzählt.<span class="sig"><span class="by">by </span><svg class="mark" viewBox="0 0 45 22.5219" aria-hidden="true" focusable="false"><path fill="currentColor" d="M 0.0000 0.0000 L 30.2026 0.0000 L 33.1694 7.8178 A 0.2492 0.2492 0 0 0 33.6678 7.8178 L 33.0658 5.7872 L 33.0658 0.0000 L 45.0000 0.0000 L 45.0000 22.5219 L 31.3255 22.5219 L 28.1940 14.1677 A 0.2443 0.2443 0 0 0 27.7054 14.1677 L 28.3343 16.2939 L 28.3343 22.5219 L 0.0000 22.5219 Z"/></svg></span></span></em></h1>
   <div class="lead">
     <div>
       <p>Wir begleiten eure Hochzeit vom Ja-Wort bis zur letzten Runde auf der Tanzfläche. Wir halten fest, was passiert, statt es zu inszenieren: die Blicke, das Lachen und die Momente dazwischen.</p>
+      <a class="link cta" href="#kontakt">Termin anfragen</a>
     </div>
   </div>
-</section>
-
-<div class="bleed"><div class="flip" id="flip" aria-label="Bilder im Sekundentakt">
+</div>
+<div class="o-pic"><div class="flip" id="flip" aria-label="Bilder im Sekundentakt">
     <img src="img/flip/01.webp" alt="Brautpaar geht Hand in Hand am Teich entlang" class="on" fetchpriority="high">
     <img src="img/flip/02.webp" alt="Brautpaar während der Trauung, schwarzweiß" loading="eager">
     <img src="img/flip/03.webp" alt="Brautpaar vor dem geschmückten Tor" loading="eager">
@@ -271,6 +283,7 @@ html.lenis,html.lenis body{height:auto}
     <img src="img/flip/14.webp" alt="Unterschrift im Standesamt" loading="eager">
     <img src="img/flip/15.webp" alt="Brautpaar ausgelassen auf der Tanzfläche" loading="eager">
   </div></div>
+</section>
 
 <section id="bilder">
   <div class="bleed"><div class="head"><span class="no">[02]</span><h2>Bilder vom <em>ganzen Tag</em></h2><span class="tiny">Reportage</span></div></div>
