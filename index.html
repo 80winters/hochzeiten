@@ -133,7 +133,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 @media(min-width:900px){.us{grid-template-columns:.8fr 1fr}}
 .print{background:#fff;padding:12px 12px 56px;box-shadow:0 20px 34px -22px rgba(18,17,16,.5);transform:rotate(-2.5deg);max-width:380px;justify-self:center;position:relative;margin:0}
 .print img{aspect-ratio:3/4;object-fit:cover;width:100%;height:auto}
-.print figcaption{position:absolute;left:14px;right:12px;bottom:18px;font-family:var(--mono);font-weight:700;font-size:15px;line-height:1;color:var(--ink)}
+.print figcaption{position:absolute;left:14px;right:12px;bottom:18px;font-family:var(--serif);font-style:italic;font-weight:400;font-size:19px;line-height:1;color:var(--ink-2)}
 .us .txt{display:flex;flex-direction:column;gap:18px;max-width:54ch}
 .us h3{font-family:var(--serif);font-size:clamp(30px,3.4vw,48px);line-height:1}
 .us .txt p{color:var(--ink-2)}
@@ -179,12 +179,10 @@ footer a:hover{color:var(--ink)}
 .tw .caret{display:inline-block;width:.06em;min-width:2px;height:.9em;background:currentColor;vertical-align:-.08em;margin-left:.04em;animation:blink .5s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 /* Dunkelrote, analog-körnige Flächen */
-.grain{background-color:#2f1a19;background-image:url(img/grain.png);background-size:128px 128px;background-blend-mode:normal;position:relative;isolation:isolate;color:#efe4df}
-.grain::before{content:"";position:absolute;inset:0;background:inherit;background-image:url(img/grain.png);background-size:128px 128px;mix-blend-mode:overlay;opacity:.7;z-index:-1}
-.grain{background-image:none}
+.grain{background:#3a120d url(img/film-rot.jpg) center/cover no-repeat;color:#efe4df}
 #kontakt.grain{border-top:0}
 #kontakt.grain .contact p,#kontakt.grain .tiny{color:#d9c3bd}
-#kontakt.grain .btn{background:#f2e6e0;color:#2f1a19;border-color:#f2e6e0}
+#kontakt.grain .btn{background:#f2e6e0;color:#3a120d;border-color:#f2e6e0}
 #kontakt.grain .btn:hover{background:transparent;color:#f2e6e0}
 #kontakt.grain .link{border-color:#f2e6e0}
 /* Weiches Scrollen (Lenis, wie Messeseite, nur Maus/Trackpad) */
