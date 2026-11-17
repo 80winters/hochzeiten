@@ -194,9 +194,16 @@ footer a:hover{color:var(--ink)}
 @media(max-width:420px){.opener{gap:12px;padding:16px;font-size:12px}}
 .opener[aria-expanded="true"]{margin-bottom:clamp(28px,4vw,56px)}
 .opener[aria-expanded="true"] .o-a{transform:rotate(180deg)}
-.intro .mark{display:inline-block;height:.17em;width:auto;vertical-align:.62em;margin-left:.06em;color:var(--ink)}
+.intro .mark{display:inline-block;height:.14em;width:auto;vertical-align:.48em;margin-left:.06em;color:var(--ink);transform:rotate(7deg)}
 .tw .mark{visibility:hidden}
 .tw.done .mark{visibility:visible}
+/* Touch: was am Mac beim Drüberfahren wächst, wächst hier in der Bildschirmmitte */
+@media(hover:none){
+  .steps li{transform-origin:left center}
+  .steps li.focus{scale:1.035}
+  .card.focus{scale:1.05;z-index:2;box-shadow:0 0 22px rgba(18,17,16,.1),0 24px 36px -24px rgba(18,17,16,.4)}
+  .collage figure.focus{z-index:5;transform:rotate(0) scale(1.03)}
+}
 /* Weiches Scrollen (Lenis, wie Messeseite, nur Maus/Trackpad) */
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
@@ -397,6 +404,11 @@ html.lenis,html.lenis body{height:auto}
     b.addEventListener('click',function(){var o=g.hidden;g.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');b.querySelector('.o-t').textContent=o?'Galerie schließen':'Galerie öffnen';
       if(!o){var r=document.getElementById('bilder').getBoundingClientRect();if(r.top<0)window.scrollTo({top:window.scrollY+r.top-60})}
       window.dispatchEvent(new Event('resize'))});
+  })();
+  (function(){
+    if(!window.matchMedia('(hover: none)').matches||!('IntersectionObserver' in window))return;
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){en.target.classList.toggle('focus',en.isIntersecting)})},{rootMargin:'-42% 0px -42% 0px',threshold:0});
+    document.querySelectorAll('.steps li, .card, .collage figure').forEach(function(el){io.observe(el)});
   })();
   var els=document.querySelectorAll('.rise');
   if('IntersectionObserver' in window){
