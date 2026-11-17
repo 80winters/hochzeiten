@@ -260,11 +260,11 @@ html.lenis,html.lenis body{height:auto}
 /* ===== Variante: Bild-Hero ===== */
 .bg-hero{background:#2a2226}
 .bg-hero::before{display:none}
-.hbg{position:absolute;left:0;right:0;top:-12%;bottom:-12%;z-index:-2;transform:translate3d(0,calc(var(--py,0px)*.5),0);will-change:transform;pointer-events:none}
-.hbg i{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.4s ease}
+.hbg{position:absolute;left:0;right:0;top:-6%;bottom:-6%;z-index:-2;transform:translate3d(0,calc(var(--py,0px)*.25),0);will-change:transform;pointer-events:none}
+.hbg i{position:absolute;inset:0;background-size:cover;background-position:72% 40%;opacity:0;transition:opacity 1.4s ease}
 .hbg i.on{opacity:1}
 .bg-hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(16,12,14,.6) 0%,rgba(16,12,14,.3) 50%,rgba(16,12,14,.08) 100%)}
-@media(max-width:700px){.bg-hero::after{background:linear-gradient(180deg,rgba(16,12,14,.12) 0%,rgba(16,12,14,.2) 45%,rgba(16,12,14,.62) 100%)}}
+@media(max-width:700px){.hbg i{background-position:50% 20%}.bg-hero::after{background:linear-gradient(180deg,rgba(16,12,14,.12) 0%,rgba(16,12,14,.2) 45%,rgba(16,12,14,.62) 100%)}}
 .intro.bg-hero{display:flex!important;flex-direction:column;justify-content:flex-end;min-height:calc(100svh - 52px);padding-block:clamp(40px,6vw,96px)!important;color:#f3efe8}
 .intro.bg-hero .o-text{max-width:1100px}
 .intro.bg-hero .meta{color:#f3efe8;opacity:.9;text-shadow:0 1px 8px rgba(0,0,0,.6)}
@@ -385,8 +385,8 @@ html.lenis,html.lenis body{height:auto}
     <figure class="print rise"><img src="img/richard.jpg" alt="Richard, euer Ansprechpartner bei NEVERDALESS" loading="lazy" width="900" height="1200"><figcaption>Richard, euer Kontakt</figcaption></figure>
     <div class="txt">
       <h3>Ein Team, <em>eine Bildsprache.</em></h3>
-      <p><b>Foto und Film aus einem Team</b>, deshalb passt am Ende beides zusammen.</p>
-      <p>Sonst sind wir für Unternehmen und Events unterwegs. Auf Hochzeiten heißt das: genau hinsehen, nichts stellen.</p>
+      <p><b>Foto und Film aus einem eingespielten Team</b>, deshalb passt am Ende beides zusammen.</p>
+      <p>Und ihr habt einen festen Ansprechpartner, vom ersten Gespräch bis zur fertigen Galerie.</p>
       
       <div class="row"><a class="btn ghost" href="https://www.neverdaless.com/aboutndl" target="_blank" rel="noopener">Das Team</a></div>
     </div>
