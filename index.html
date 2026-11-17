@@ -278,6 +278,18 @@ html.lenis,html.lenis body{height:auto}
 .intro.bg-hero .lead p{background:#f2efe8;color:var(--ink-2);padding:14px 18px;font-size:14.5px;max-width:44ch;transform:rotate(-.5deg);box-shadow:0 10px 30px rgba(0,0,0,.25);clip-path:polygon(0 1%,30% 0,64% 2%,100% 0,99% 99%,70% 100%,35% 98%,1% 100%)}
 .intro.bg-hero .cta{color:#f3efe8;border-color:#f3efe8;text-shadow:0 1px 8px rgba(0,0,0,.6)}
 @media(min-width:1000px){.intro.bg-hero{align-items:flex-start!important}.intro.bg-hero .o-text{margin-left:0;max-width:62%}.intro.bg-hero h1{font-size:clamp(50px,6.6vw,128px)!important}.intro.bg-hero .lead{grid-template-columns:1fr!important}.intro.bg-hero .lead>div{grid-column:1!important;padding-left:clamp(0px,6vw,110px)}}
+
+/* Kurze Fragen */
+.bg-wurf{background-color:#26303b;background-image:linear-gradient(rgba(14,18,26,.62),rgba(14,18,26,.62)),url(img/detail-wurf.jpg)}
+@media(max-width:700px){.bg-wurf{background-image:linear-gradient(rgba(14,18,26,.55),rgba(14,18,26,.55)),url(img/detail-wurf-m.jpg)}}
+.faq{max-width:920px;text-shadow:0 1px 12px rgba(0,0,0,.55),0 0 2px rgba(0,0,0,.4)}
+.faq details{border-bottom:1px solid rgba(241,235,226,.3)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:20px 0;font-family:var(--serif);font-size:clamp(24px,2.6vw,36px);line-height:1.1;color:var(--fg)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:20px;flex:none;opacity:.85}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--fg);max-width:60ch;padding:0 0 22px}
+.contact .ctas{display:flex;flex-wrap:wrap;gap:12px}
 </style>
 </head>
 <body>
@@ -333,7 +345,6 @@ html.lenis,html.lenis body{height:auto}
   <div class="bleed" id="sammlung" hidden><div class="collage">
     <figure class="frame" style="--c:1/6;--r:1;--mt:0;--mc:1/7;--rot:-1deg"><img src="img/01f.webp" alt="Eheringe in der Schatulle" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
     <figure class="frame" style="--c:5/8;--r:1;--mt:clamp(28px,4.86vw,70px);--mc:1/4;--rot:2deg"><img src="img/03f.webp" alt="Unterschrift im Standesamt" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:8/13;--r:1;--mt:clamp(8px,1.39vw,20px);--mc:4/7;--rot:.5deg"><img src="img/02f.webp" alt="Braut am Tisch im Standesamt" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
     <figure class="frame" style="--c:1/6;--r:2;--mt:clamp(-40px,-2.78vw,-16px);--mc:1/5;--rot:-1.5deg"><img src="img/09f.webp" alt="Brautpaar vor dem geschmückten Tor" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
     <figure class="frame" style="--c:6/9;--r:2;--mt:clamp(12px,2.08vw,30px);--mc:5/7;--rot:1deg"><img src="img/06f.webp" alt="Kuss unter der Trauerweide" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
     <figure class="frame" style="--c:9/12;--r:2;--mt:clamp(-20px,-1.39vw,-8px);--mc:1/4;--rot:-1deg"><img src="img/08f.webp" alt="Bräutigam hebt die Braut hoch" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
@@ -372,6 +383,7 @@ html.lenis,html.lenis body{height:auto}
   <ul class="fine">
       <li><b>Keine Stoppuhr.</b> Ihr wählt, bis zu welchem Moment wir bleiben.</li>
       <li><b>Immer dabei:</b> Auswahl, Bearbeitung, Online-Galerie, Anfahrt.</li>
+      <li><b>Eure Galerie</b> nach 1–3 Wochen, je nach Umfang.</li>
       <li><b>Foto, Film oder beides.</b></li>
       <li><b>Gern auch früher:</b> beim Getting Ready oder für ein paar Minuten zu zweit vor der Trauung.</li>
       <li><b>Keine Anzahlung.</b></li>
@@ -379,8 +391,19 @@ html.lenis,html.lenis body{height:auto}
     </ul>
 </section>
 
+<section class="bleed bgimg field bg-wurf" id="fragen">
+  <div class="head"><span class="no">[05]</span><h2>Kurze <em>Fragen</em></h2><span class="tiny">Zum Aufklappen</span></div>
+  <div class="faq">
+    <details><summary>Wann bekommen wir die Bilder?</summary><p>Nach 1–3 Wochen, je nach Umfang. Ihr bekommt sie in einer Online-Galerie zum Ansehen, Teilen und Herunterladen.</p></details>
+    <details><summary>Kommt ihr auch weiter weg?</summary><p>Ja, gern. Die Anfahrt ist im Paket schon drin. Bei sehr weiten Wegen sprechen wir vorher kurz über eine Übernachtung.</p></details>
+    <details><summary>Und wenn es regnet?</summary><p>Dann suchen wir geschützte Ecken und arbeiten mit dem Licht, das da ist. Gefeiert wird ja trotzdem, und oft entstehen genau dann die schönsten Bilder.</p></details>
+    <details><summary>Bekommen wir auch unbearbeitete Bilder?</summary><p>Ihr bekommt eine sorgfältige Auswahl, jedes Bild fertig bearbeitet. Unbearbeitete Dateien geben wir nicht heraus, weil sie nicht zeigen, wie euer Tag wirklich aussah.</p></details>
+    <details><summary>Dürfen wir die Bilder teilen und drucken?</summary><p>Ja, privat ohne Einschränkung: teilen, drucken, ein Album machen. Wenn wir einzelne Bilder selbst zeigen möchten, fragen wir euch vorher.</p></details>
+  </div>
+</section>
+
 <section class="bleed bgimg field bg-glas" id="wir">
-  <div class="head"><span class="no">[05]</span><h2>Wir sind <em>NEVERDALESS</em></h2><span class="tiny">Foto &amp; Film aus einer Hand</span></div>
+  <div class="head"><span class="no">[06]</span><h2>Wir sind <em>NEVERDALESS</em></h2><span class="tiny">Foto &amp; Film aus einer Hand</span></div>
   <div class="us">
     <figure class="print rise"><img src="img/richard.jpg" alt="Richard, euer Ansprechpartner bei NEVERDALESS" loading="lazy" width="900" height="1200"><figcaption>Richard, euer Kontakt</figcaption></figure>
     <div class="txt">
@@ -395,10 +418,10 @@ html.lenis,html.lenis body{height:auto}
 
 <section class="bleed grain bgimg" id="kontakt">
   <div class="contact">
-    <p class="tiny">[06] Kontakt</p>
+    <p class="tiny">[07] Kontakt</p>
     <h2>Erzählt uns <em>von eurem Tag.</em></h2>
     <p>Schreibt uns euer Datum, die Location und wie lange wir dabei sein sollen. Ihr bekommt ein persönliches Angebot.</p>
-    <a class="btn" href="mailto:richard@neverdaless.com?subject=Hochzeitsanfrage">Anfrage senden</a>
+    <div class="row ctas"><a class="btn" href="https://wa.me/4917620766446?text=Hallo%20Richard%2C%20wir%20heiraten%20am%20%E2%80%A6%20in%20%E2%80%A6%20und%20w%C3%BCrden%20uns%20gern%20%C3%BCber%20eure%20Begleitung%20unterhalten." target="_blank" rel="noopener">Per WhatsApp schreiben</a><a class="btn" href="mailto:richard@neverdaless.com?subject=Hochzeitsanfrage">Per Mail anfragen</a></div>
     <div class="lines">
       <a class="link" href="mailto:richard@neverdaless.com">richard@neverdaless.com</a>
       <a class="link" href="tel:+4917620766446">+49 176 2076 6446</a>
