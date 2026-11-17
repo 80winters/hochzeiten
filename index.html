@@ -254,6 +254,28 @@ footer a:hover{color:var(--ink)}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 .lenis.lenis-stopped{overflow:hidden}
+
+/* ===== Variante: Bild-Hero ===== */
+.bg-hero{background:#2a2226}
+.bg-hero::before{display:none}
+.hbg{position:absolute;left:0;right:0;top:-12%;bottom:-12%;z-index:-2;transform:translate3d(0,calc(var(--py,0px)*.5),0);will-change:transform;pointer-events:none}
+.hbg i{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.4s ease}
+.hbg i.on{opacity:1}
+.bg-hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(16,12,14,.6) 0%,rgba(16,12,14,.3) 50%,rgba(16,12,14,.08) 100%)}
+@media(max-width:700px){.bg-hero::after{background:linear-gradient(180deg,rgba(16,12,14,.12) 0%,rgba(16,12,14,.2) 45%,rgba(16,12,14,.62) 100%)}}
+.intro.bg-hero{display:flex!important;flex-direction:column;justify-content:flex-end;min-height:calc(100svh - 52px);padding-block:clamp(40px,6vw,96px)!important;color:#f3efe8}
+.intro.bg-hero .o-text{max-width:1100px}
+.intro.bg-hero .meta{color:#f3efe8;opacity:.9;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.intro.bg-hero h1{color:var(--ink);font-size:clamp(50px,8.4vw,150px)!important;line-height:1.02}
+.intro.bg-hero h1 em{padding-left:clamp(0px,6vw,110px)!important;margin-top:.06em}
+.strip{display:inline;background:#f2efe8;padding:.02em .16em .06em;-webkit-box-decoration-break:clone;box-decoration-break:clone;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.strip.s1{display:inline-block;transform:rotate(-1.4deg);clip-path:polygon(0 3%,8% 0,23% 4%,41% 1%,62% 3%,80% 0,100% 2%,99% 97%,82% 100%,60% 96%,38% 100%,17% 97%,1% 100%)}
+.strip.s2{background:#ece6dc;padding:.0em .16em .08em}
+.intro.bg-hero h1 em{display:block;transform:rotate(.9deg);transform-origin:left}
+.intro.bg-hero .mark{color:var(--ink)}
+.intro.bg-hero .lead p{background:#f2efe8;color:var(--ink-2);padding:14px 18px;font-size:14.5px;max-width:44ch;transform:rotate(-.5deg);box-shadow:0 10px 30px rgba(0,0,0,.25);clip-path:polygon(0 1%,30% 0,64% 2%,100% 0,99% 99%,70% 100%,35% 98%,1% 100%)}
+.intro.bg-hero .cta{color:#f3efe8;border-color:#f3efe8;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+@media(min-width:1000px){.intro.bg-hero{align-items:flex-start!important}.intro.bg-hero .o-text{margin-left:0;max-width:62%}.intro.bg-hero h1{font-size:clamp(50px,6.6vw,128px)!important}.intro.bg-hero .lead{grid-template-columns:1fr!important}.intro.bg-hero .lead>div{grid-column:1!important;padding-left:clamp(0px,6vw,110px)}}
 </style>
 </head>
 <body>
@@ -266,10 +288,10 @@ html.lenis,html.lenis body{height:auto}
   <a class="link" href="#kontakt">Anfragen</a>
 </header>
 
-<section class="intro bleed">
+<section class="intro bleed bgimg bg-hero"><div class="hbg" aria-hidden="true"><i class="on" data-n="1"></i><i data-n="2"></i><i data-n="3"></i><i data-n="4"></i><i data-n="5"></i></div>
 <div class="o-text">
-  <div class="meta tiny"><span>[N° 01]</span><span>Hochzeitsfotografie &amp; Hochzeitsfilm</span><span>Bonn · Koblenz · Eifel</span></div>
-  <h1>Euer Tag. <em>Ehrlich <span class="nw">erzählt.<span class="sig"><span class="by">by </span><svg class="mark" viewBox="0 0 45 22.5219" aria-hidden="true" focusable="false"><path fill="currentColor" d="M 0.0000 0.0000 L 30.2026 0.0000 L 33.1694 7.8178 A 0.2492 0.2492 0 0 0 33.6678 7.8178 L 33.0658 5.7872 L 33.0658 0.0000 L 45.0000 0.0000 L 45.0000 22.5219 L 31.3255 22.5219 L 28.1940 14.1677 A 0.2443 0.2443 0 0 0 27.7054 14.1677 L 28.3343 16.2939 L 28.3343 22.5219 L 0.0000 22.5219 Z"/></svg></span></span></em></h1>
+  <div class="meta tiny"><span>Hochzeitsfotografie &amp; Hochzeitsfilm</span><span>Bonn · Koblenz · Eifel</span></div>
+  <h1><span class="strip s1">Euer Tag.</span> <em><span class="strip s2">Ehrlich <span class="nw">erzählt.<span class="sig"><span class="by">by </span><svg class="mark" viewBox="0 0 45 22.5219" aria-hidden="true" focusable="false"><path fill="currentColor" d="M 0.0000 0.0000 L 30.2026 0.0000 L 33.1694 7.8178 A 0.2492 0.2492 0 0 0 33.6678 7.8178 L 33.0658 5.7872 L 33.0658 0.0000 L 45.0000 0.0000 L 45.0000 22.5219 L 31.3255 22.5219 L 28.1940 14.1677 A 0.2443 0.2443 0 0 0 27.7054 14.1677 L 28.3343 16.2939 L 28.3343 22.5219 L 0.0000 22.5219 Z"/></svg></span></span></span></em></h1>
   <div class="lead">
     <div>
       <p>Wir begleiten eure Hochzeit vom Ja-Wort bis zur letzten Runde auf der Tanzfläche. Wir halten fest, was passiert, statt es zu inszenieren: die Blicke, das Lachen und die Momente dazwischen.</p>
@@ -277,23 +299,7 @@ html.lenis,html.lenis body{height:auto}
     </div>
   </div>
 </div>
-<div class="o-pic"><div class="flip" id="flip" aria-label="Bilder im Sekundentakt">
-    <img src="img/flip/01.webp" alt="Brautpaar geht Hand in Hand am Teich entlang" class="on" fetchpriority="high">
-    <img src="img/flip/02.webp" alt="Brautpaar während der Trauung, schwarzweiß" loading="eager">
-    <img src="img/flip/03.webp" alt="Brautpaar vor dem geschmückten Tor" loading="eager">
-    <img src="img/flip/04.webp" alt="Gäste lachen zwischen Seifenblasen" loading="eager">
-    <img src="img/flip/05.webp" alt="Kuss unter der Trauerweide" loading="eager">
-    <img src="img/flip/06.webp" alt="Der erste Blick am Teich" loading="eager">
-    <img src="img/flip/07.webp" alt="Hände mit Eheringen auf dem Brautstrauß" loading="eager">
-    <img src="img/flip/08.webp" alt="Gäste springen ausgelassen vor dem Schloss" loading="eager">
-    <img src="img/flip/09.webp" alt="Brautpaar an der Backsteinwand" loading="eager">
-    <img src="img/flip/10.webp" alt="Brautpaar in der Abenddämmerung vor dem Schloss" loading="eager">
-    <img src="img/flip/11.webp" alt="Handkuss bei der Feier" loading="eager">
-    <img src="img/flip/12.webp" alt="Eröffnungstanz vor den Gästen" loading="eager">
-    <img src="img/flip/13.webp" alt="Die Braut wirft den Brautstrauß" loading="eager">
-    <img src="img/flip/14.webp" alt="Unterschrift im Standesamt" loading="eager">
-    <img src="img/flip/15.webp" alt="Brautpaar ausgelassen auf der Tanzfläche" loading="eager">
-  </div></div>
+
 </section>
 
 <section id="bilder">
@@ -485,6 +491,16 @@ html.lenis,html.lenis body{height:auto}
     var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.15});
     els.forEach(function(el){io.observe(el)});
   } else els.forEach(function(el){el.classList.add('in')});
+})();
+</script>
+<script>
+(function(){var h=document.querySelector('.hbg');if(!h)return;var ls=[].slice.call(h.children),mq=matchMedia('(max-width:700px)'),k=0;
+  function src(n){return 'img/hero-'+n+(mq.matches?'-m':'')+'.jpg'}
+  function set(i){i.style.backgroundImage='url('+src(i.dataset.n)+')'}
+  set(ls[0]);window.addEventListener('load',function(){ls.slice(1).forEach(set)});
+  mq.addEventListener('change',function(){ls.forEach(set)});
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  setInterval(function(){ls[k].classList.remove('on');k=(k+1)%ls.length;ls[k].classList.add('on')},4000);
 })();
 </script>
 </body>
