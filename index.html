@@ -303,6 +303,10 @@ html.lenis,html.lenis body{height:auto}
 .card-wide{grid-column:1/-1}
 @media(min-width:900px){.card-wide .cw{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:end}.card-wide .cw ul{border-top:0;padding-top:0}}
 @media(min-width:1000px){.intro.bg-hero .strip.s2{white-space:nowrap}}
+
+/* Überschriften in Kleinbuchstaben, Etiketten bleiben groß */
+.intro h1,.head:not(.head-lbl) h2,.contact h2,.steps h3,.card h3,.us h3{text-transform:lowercase}
+.keep{text-transform:none}
 </style>
 </head>
 <body>
@@ -416,7 +420,7 @@ html.lenis,html.lenis body{height:auto}
 </section>
 
 <section class="bleed bgimg field bg-glas" id="wir">
-  <div class="head"><span class="no">[06]</span><h2>Wir sind <em>NEVERDALESS</em></h2><span class="tiny">Foto &amp; Film aus einer Hand</span></div>
+  <div class="head"><span class="no">[06]</span><h2>Wir sind <em class="keep">NEVERDALESS</em></h2><span class="tiny">Foto &amp; Film aus einer Hand</span></div>
   <div class="us">
     <figure class="print rise"><img src="img/richard.jpg" alt="Richard, euer Ansprechpartner bei NEVERDALESS" loading="lazy" width="900" height="1200"><figcaption>Richard, euer Kontakt</figcaption></figure>
     <div class="txt">
