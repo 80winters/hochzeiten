@@ -206,6 +206,28 @@ footer a:hover{color:var(--ink)}
   .steps li.focus{scale:1.035}
   .card.focus{scale:1.05;z-index:2;box-shadow:0 0 22px rgba(18,17,16,.1),0 24px 36px -24px rgba(18,17,16,.4)}
 }
+/* Hintergründe aus Bilddetails (Testfassung) */
+.bgimg{background-size:cover;background-position:center;background-repeat:no-repeat}
+.bg-strauss{background-color:#e6e2dc;background-image:linear-gradient(rgba(242,241,236,.38),rgba(242,241,236,.38)),url(img/detail-strauss.jpg)}
+.bg-rosen{background-color:#2a1416;background-image:linear-gradient(rgba(14,8,9,.32),rgba(14,8,9,.32)),url(img/detail-rosen.jpg)}
+.bg-glas{background-color:#1a2422;background-image:linear-gradient(rgba(8,12,11,.3),rgba(8,12,11,.3)),url(img/detail-glas.jpg)}
+@media(max-width:700px){.bg-strauss{background-image:linear-gradient(rgba(242,241,236,.42),rgba(242,241,236,.42)),url(img/detail-strauss-m.jpg)}.bg-rosen{background-image:linear-gradient(rgba(14,8,9,.36),rgba(14,8,9,.36)),url(img/detail-rosen-m.jpg)}.bg-glas{background-image:linear-gradient(rgba(8,12,11,.34),rgba(8,12,11,.34)),url(img/detail-glas-m.jpg)}}
+.bg-strauss .steps p,.bg-strauss .steps h3{color:var(--ink);text-shadow:0 0 14px rgba(242,241,236,.9),0 0 3px rgba(242,241,236,.8)}
+.bg-strauss .head h2,.bg-strauss .head .no,.bg-strauss .head .tiny,.bg-strauss .steps .n{text-shadow:0 0 14px rgba(242,241,236,.9)}
+.bg-strauss .head .no,.bg-strauss .head .tiny,.bg-strauss .steps .n{color:var(--ink-2)}
+.bg-strauss .steps li{border-color:rgba(18,17,16,.25)}
+.field{--fg:#f1ebe2;--fg2:#ddd4c7;--fg3:#b3a99b;color:var(--fg)}
+.field .head{border-color:var(--fg)}
+.field .head .no,.field .head .tiny{color:var(--fg3)}
+.field .fine,.field .us .txt p{color:var(--fg)}
+.field .fine,.field .us .txt,.field .head{text-shadow:0 1px 12px rgba(0,0,0,.55),0 0 2px rgba(0,0,0,.4)}
+.field .fine b,.field .us .txt p b{color:var(--fg)}
+.field h2,.field .us h3{color:var(--fg)}
+.field .card,.field .card h3{color:var(--ink)}
+.field .btn.ghost{color:var(--fg);border-color:var(--fg)}
+.field .btn.ghost:hover{background:var(--fg);color:#1a2422}
+/* Karten leicht durchscheinend */
+.field .card{background:rgba(251,250,246,.8);-webkit-backdrop-filter:blur(8px) saturate(1.1);backdrop-filter:blur(8px) saturate(1.1);border-color:rgba(255,255,255,.35)}
 /* Weiches Scrollen (Lenis, wie Messeseite, nur Maus/Trackpad) */
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
@@ -296,7 +318,7 @@ html.lenis,html.lenis body{height:auto}
   </div></div>
 </section>
 
-<section class="bleed" id="ablauf" style="padding-top:0">
+<section class="bleed bgimg bg-strauss" id="ablauf">
   <div class="head"><span class="no">[03]</span><h2>So läuft <em>es ab</em></h2><span class="tiny">Vier Schritte</span></div>
   <ol class="steps">
     <li class="rise"><span class="n">— 01</span><h3>Kennenlernen</h3><p>Wir telefonieren oder treffen uns. Ihr erzählt uns vom Ablauf, von den Menschen, die euch wichtig sind, und von euren Wünschen.</p></li>
@@ -306,7 +328,7 @@ html.lenis,html.lenis body{height:auto}
   </ol>
 </section>
 
-<section class="bleed" id="begleitung" style="padding-top:0">
+<section class="bleed bgimg field bg-rosen" id="begleitung">
   <div class="head"><span class="no">[04]</span><h2>Pakete <em>für euren Tag</em></h2><span class="tiny">Ohne Stoppuhr</span></div>
   <div class="cards">
     <div class="card rise" style="--rot:-.8deg"><div class="top tiny"><span>Paket 1/3</span></div><h3>Ja-Wort <em>Trauung &amp; Empfang</em></h3><p>Für Hochzeiten, deren Kern am frühen Nachmittag liegt.</p><ul><li>Trauung</li><li>Sektempfang</li><li>Paar- &amp; Gruppenfotos</li></ul></div>
@@ -319,7 +341,7 @@ html.lenis,html.lenis body{height:auto}
   </div>
 </section>
 
-<section class="bleed" id="wir" style="padding-top:0">
+<section class="bleed bgimg field bg-glas" id="wir">
   <div class="head"><span class="no">[05]</span><h2>Wir sind <em>NEVERDALESS</em></h2><span class="tiny">Foto &amp; Film aus einer Hand</span></div>
   <div class="us">
     <figure class="print rise"><img src="img/richard.jpg" alt="Richard, euer Ansprechpartner bei NEVERDALESS" loading="lazy" width="900" height="1200"><figcaption>Richard, euer Kontakt</figcaption></figure>
