@@ -185,6 +185,15 @@ footer a:hover{color:var(--ink)}
 #kontakt.grain .btn{background:#f2e6e0;color:#3a120d;border-color:#f2e6e0}
 #kontakt.grain .btn:hover{background:transparent;color:#f2e6e0}
 #kontakt.grain .link{border-color:#f2e6e0}
+/* Galerie öffnen */
+.opener{width:100%;display:flex;align-items:center;gap:18px;background:transparent;border:1px solid var(--ink);color:var(--ink);font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:18px 22px;cursor:pointer;text-align:left}
+.opener .o-n{color:var(--ink-3);margin-right:auto}
+.opener .o-a{font-size:16px}
+.opener span{white-space:nowrap}
+@media(hover:hover){.opener:hover{background:var(--ink);color:var(--ground)}.opener:hover .o-n{color:var(--ground)}}
+@media(max-width:420px){.opener{gap:12px;padding:16px;font-size:12px}}
+.opener[aria-expanded="true"]{margin-bottom:clamp(28px,4vw,56px)}
+.opener[aria-expanded="true"] .o-a{transform:rotate(180deg)}
 /* Weiches Scrollen (Lenis, wie Messeseite, nur Maus/Trackpad) */
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
@@ -231,7 +240,8 @@ html.lenis,html.lenis body{height:auto}
 
 <section id="bilder">
   <div class="bleed"><div class="head"><span class="no">[02]</span><h2>Bilder vom <em>ganzen Tag</em></h2><span class="tiny">Reportage, 2025–2026</span></div></div>
-  <div class="bleed"><div class="collage">
+  <div class="bleed"><button class="opener" type="button" aria-expanded="false" aria-controls="sammlung"><span class="o-t">Galerie öffnen</span><span class="o-n">[29 Bilder]</span><span class="o-a" aria-hidden="true">↓</span></button></div>
+  <div class="bleed" id="sammlung" hidden><div class="collage">
     <figure class="frame" style="--c:1/6;--r:1;--mt:0;--mc:1/7;--rot:-1deg"><img src="img/26f.webp" alt="Der erste Blick am Teich" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
     <figure class="frame" style="--c:5/8;--r:1;--mt:clamp(28px,4.86vw,70px);--mc:1/4;--rot:2deg"><img src="img/06f.webp" alt="Kuss unter der Trauerweide" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
     <figure class="frame" style="--c:8/13;--r:1;--mt:clamp(8px,1.39vw,20px);--mc:3/7;--rot:.5deg"><img src="img/25f.webp" alt="Brautpaar während der Trauung, schwarzweiß" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
@@ -287,9 +297,9 @@ html.lenis,html.lenis body{height:auto}
 <section class="bleed" id="begleitung" style="padding-top:0">
   <div class="head"><span class="no">[04]</span><h2>Begleitung <em>nach eurem Tag</em></h2><span class="tiny">Ohne Stoppuhr</span></div>
   <div class="cards">
-    <div class="card rise" style="--rot:-.8deg"><div class="top tiny"><span>Karte 1/3</span><span>Paket</span></div><h3>Ja-Wort <em>Trauung &amp; Empfang</em></h3><p>Für Hochzeiten, deren Kern am frühen Nachmittag liegt.</p><ul><li>Trauung</li><li>Sektempfang</li><li>Paar- &amp; Gruppenfotos</li></ul></div>
-    <div class="card rise" style="--rot:.6deg"><div class="top tiny"><span>Karte 2/3</span><span>Paket</span></div><h3>Bis zum Abend <em>mit Feier</em></h3><p>Alles aus „Ja-Wort“, dazu der Nachmittag und der Beginn der Feier.</p><ul><li>Kaffee &amp; Kuchen</li><li>Reden &amp; Programm</li><li>Feier bis in den Abend</li></ul></div>
-    <div class="card rise" style="--rot:-.4deg"><div class="top tiny"><span>Karte 3/3</span><span>Paket</span></div><h3>Bis zur Party <em>der ganze Tag</em></h3><p>Vom Ja-Wort bis tief in den Abend.</p><ul><li>Dinner</li><li>Eröffnungstanz</li><li>Party</li></ul></div>
+    <div class="card rise" style="--rot:-.8deg"><div class="top tiny"><span>Paket 1/3</span></div><h3>Ja-Wort <em>Trauung &amp; Empfang</em></h3><p>Für Hochzeiten, deren Kern am frühen Nachmittag liegt.</p><ul><li>Trauung</li><li>Sektempfang</li><li>Paar- &amp; Gruppenfotos</li></ul></div>
+    <div class="card rise" style="--rot:.6deg"><div class="top tiny"><span>Paket 2/3</span></div><h3>Bis zum Abend <em>mit Feier</em></h3><p>Alles aus „Ja-Wort“, dazu der Nachmittag und der Beginn der Feier.</p><ul><li>Kaffee &amp; Kuchen</li><li>Reden &amp; Programm</li><li>Feier bis in den Abend</li></ul></div>
+    <div class="card rise" style="--rot:-.4deg"><div class="top tiny"><span>Paket 3/3</span></div><h3>Bis zur Party <em>der ganze Tag</em></h3><p>Vom Ja-Wort bis tief in den Abend.</p><ul><li>Dinner</li><li>Eröffnungstanz</li><li>Party</li></ul></div>
   </div>
   <div class="fine">
     <p><b>Wir rechnen nicht auf die Stunde ab.</b> Ihr wählt, bis zu welchem Moment wir dabei sein sollen. Passt keines genau, stimmen wir das Paket auf euren Tag ab. Wenn sich etwas verschiebt, bleiben wir entspannt.</p>
@@ -379,6 +389,11 @@ html.lenis,html.lenis body{height:auto}
       (function step(){if(i<list.length){list[i].classList.add('v');list[i].after(car);i++;setTimeout(step,list[i-1].textContent===' '?sp*.5:sp)}else setTimeout(function(){car.remove()},900)})()}
     var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;io.unobserve(en.target);type(en.target,en.target._ch)})},{threshold:.6});
     els.forEach(function(el){el._ch=prep(el);io.observe(el)});
+  })();
+  (function(){var b=document.querySelector('.opener'),g=document.getElementById('sammlung');if(!b||!g)return;
+    b.addEventListener('click',function(){var o=g.hidden;g.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');b.querySelector('.o-t').textContent=o?'Galerie schließen':'Galerie öffnen';
+      if(!o){var r=document.getElementById('bilder').getBoundingClientRect();if(r.top<0)window.scrollTo({top:window.scrollY+r.top-60})}
+      window.dispatchEvent(new Event('resize'))});
   })();
   var els=document.querySelectorAll('.rise');
   if('IntersectionObserver' in window){
