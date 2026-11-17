@@ -53,7 +53,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 /* Abschnittskopf: Nummer + Titel */
 .head{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:18px;margin:0 0 clamp(28px,4vw,56px);padding-bottom:14px;border-bottom:1px solid var(--ink)}
 .head .no{font-family:var(--mono);font-size:13px;color:var(--ink-3);padding-bottom:.5em}
-.head h2{font-family:var(--serif);font-size:clamp(34px,5vw,72px);line-height:.95;letter-spacing:-.01em}
+.head h2{font-family:var(--serif);font-size:clamp(34px,5vw,72px);line-height:.95;letter-spacing:0}
 .head .tiny{padding-bottom:.6em}
 @media(max-width:600px){.head{grid-template-columns:auto 1fr}.head .tiny{display:none}}
 
@@ -72,7 +72,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 /* Einstieg */
 .intro{padding-block:clamp(40px,7vw,110px) clamp(32px,5vw,64px);position:relative}
 .intro .meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin-bottom:clamp(22px,3vw,40px)}
-.intro h1{font-family:var(--serif);font-size:clamp(52px,10.5vw,168px);line-height:.98;letter-spacing:-.025em}
+.intro h1{font-family:var(--serif);font-size:clamp(52px,10.5vw,168px);line-height:.98;letter-spacing:-.012em}
 .intro h1 em{display:block;padding-left:clamp(0px,9vw,150px)}
 .intro .lead{display:grid;grid-template-columns:1fr;gap:22px;margin-top:clamp(28px,4vw,56px)}
 @media(min-width:900px){.intro .lead{grid-template-columns:1fr 1fr;align-items:end}.intro .lead > div{grid-column:2}}
@@ -142,7 +142,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 
 /* Kontakt */
 .contact{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
-.contact h2{font-family:var(--serif);font-size:clamp(52px,10vw,160px);line-height:.88;letter-spacing:-.025em}
+.contact h2{font-family:var(--serif);font-size:clamp(52px,10vw,160px);line-height:.92;letter-spacing:-.012em}
 .contact h2 em{display:block;padding-left:clamp(0px,9vw,150px)}
 .contact p{color:var(--ink-2);max-width:52ch}
 .contact .lines{display:flex;flex-wrap:wrap;gap:10px 28px}
@@ -194,7 +194,7 @@ footer a:hover{color:var(--ink)}
 @media(max-width:420px){.opener{gap:12px;padding:16px;font-size:12px}}
 .opener[aria-expanded="true"]{margin-bottom:clamp(28px,4vw,56px)}
 .opener[aria-expanded="true"] .o-a{transform:rotate(180deg)}
-.intro .sig{display:inline-block;white-space:nowrap;vertical-align:.28em;margin-left:-.03em;transform:rotate(3deg);line-height:0}
+.intro .sig{letter-spacing:0;display:inline-block;white-space:nowrap;vertical-align:.28em;margin-left:-.03em;transform:rotate(3deg);line-height:0}
 .intro .nw{white-space:nowrap}
 .intro .sig .by{font-size:.13em;margin-right:.7em;vertical-align:baseline}
 .intro .mark{display:inline-block;height:.126em;width:auto;vertical-align:baseline;color:var(--ink)}
@@ -251,7 +251,7 @@ html.lenis,html.lenis body{height:auto}
 <header class="bar bleed">
   <a class="logo" href="https://www.neverdaless.com" target="_blank" rel="noopener" aria-label="Neverdaless">
     <svg viewBox="0 0 45 22.5219" aria-hidden="true" focusable="false"><path fill="currentColor" d="M 0.0000 0.0000 L 30.2026 0.0000 L 33.1694 7.8178 A 0.2492 0.2492 0 0 0 33.6678 7.8178 L 33.0658 5.7872 L 33.0658 0.0000 L 45.0000 0.0000 L 45.0000 22.5219 L 31.3255 22.5219 L 28.1940 14.1677 A 0.2443 0.2443 0 0 0 27.7054 14.1677 L 28.3343 16.2939 L 28.3343 22.5219 L 0.0000 22.5219 Z"/></svg>
-    <span>Hochzeit — Archiv</span>
+    <span>Hochzeiten</span>
   </a>
   <a class="link" href="#kontakt">Anfragen</a>
 </header>
@@ -428,13 +428,13 @@ html.lenis,html.lenis body{height:auto}
   (function(){
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
     var els=document.querySelectorAll('.intro h1, .head h2, .intro .meta, .contact h2');
-    function prep(el){el.setAttribute('aria-label',el.textContent.replace(/\s+/g,' ').trim());var list=[];
+    function prep(el){el.setAttribute('aria-label',el.textContent.replace(/\s+/g,' ').trim());el._orig=el.innerHTML;var list=[];
       (function walk(n){[].slice.call(n.childNodes).forEach(function(c){
         if(c.nodeType===3){var f=document.createDocumentFragment();c.textContent.split('').forEach(function(t){var sp=document.createElement('span');sp.className='ch';sp.setAttribute('aria-hidden','true');sp.textContent=t;f.appendChild(sp);list.push(sp)});c.parentNode.replaceChild(f,c)}
         else if(c.nodeType===1)walk(c)})})(el);
       el.classList.add('tw');return list}
     function type(el,list){var car=document.createElement('span');car.className='caret';car.setAttribute('aria-hidden','true');var i=0,sp=Math.max(36,Math.min(90,1800/list.length));
-      (function step(){if(i<list.length){list[i].classList.add('v');list[i].after(car);i++;setTimeout(step,list[i-1].textContent===' '?sp*.5:sp)}else{el.classList.add('done');setTimeout(function(){car.remove()},900)}})()}
+      (function step(){if(i<list.length){list[i].classList.add('v');list[i].after(car);i++;setTimeout(step,list[i-1].textContent===' '?sp*.5:sp)}else{el.classList.add('done');car.remove();el.innerHTML=el._orig;setTimeout(function(){car.remove()},900)}})()}
     var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;io.unobserve(en.target);type(en.target,en.target._ch)})},{threshold:.6});
     els.forEach(function(el){el._ch=prep(el);io.observe(el)});
   })();
