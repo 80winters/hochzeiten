@@ -84,7 +84,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .flip img.on{visibility:visible}
 
 /* Bilder: Collage */
-.collage{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(10px,1.8vw,26px);row-gap:clamp(8px,1.2vw,18px);align-items:start;counter-reset:n}
+.collage{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(10px,1.8vw,26px);row-gap:clamp(8px,1.2vw,18px);align-items:start}
 .collage figure{margin:0;margin-top:var(--mt,0);grid-column:var(--c);grid-row:var(--r);cursor:zoom-in;position:relative;transform:rotate(var(--rot,0));transition:transform .3s ease}
 @media(hover:hover){.collage figure:hover{z-index:5;transform:rotate(0) scale(1.03)}}
 .collage img{width:100%;height:auto}
@@ -191,7 +191,7 @@ footer a:hover{color:var(--ink)}
 .opener .o-a{font-size:16px}
 .opener span{white-space:nowrap}
 @media(hover:hover){.opener:hover{background:var(--ink);color:var(--ground)}.opener:hover .o-n{color:var(--ground)}}
-@media(max-width:420px){.opener{gap:12px;padding:16px;font-size:12px}}
+@media(max-width:520px){.opener{gap:12px;padding:16px;font-size:12px}.opener .o-n{display:none}.opener .o-t{margin-right:auto}}
 .opener[aria-expanded="true"]{margin-bottom:clamp(28px,4vw,56px)}
 .opener[aria-expanded="true"] .o-a{transform:rotate(180deg)}
 .intro .sig{letter-spacing:0;display:inline-block;white-space:nowrap;vertical-align:.28em;margin-left:-.03em;transform:rotate(3deg);line-height:0}
@@ -239,7 +239,8 @@ footer a:hover{color:var(--ink)}
   .intro .o-pic .flip{width:min(100%,calc((100svh - 140px) * 1.5));transform:rotate(1.2deg)}
 }
 @media(max-width:999px){.intro .o-pic{margin-top:clamp(32px,6vw,56px)}}
-#bilder{padding-top:clamp(28px,4vw,64px)}
+#bilder{padding-top:clamp(28px,4vw,64px);counter-reset:n}
+#bilder .collage{margin-bottom:clamp(28px,4vw,56px)}
 .card li.std{font-weight:700;margin-top:6px}
 /* Parallax: Hintergründe liegen „weiter weg“ und laufen langsamer mit */
 .bgimg{position:relative;overflow:hidden;isolation:isolate}
@@ -292,47 +293,49 @@ html.lenis,html.lenis body{height:auto}
 
 <section id="bilder">
   <div class="bleed"><div class="head"><span class="no">[02]</span><h2>Bilder vom <em>ganzen Tag</em></h2><span class="tiny">Reportage</span></div></div>
-  <div class="bleed"><button class="opener" type="button" aria-expanded="false" aria-controls="sammlung"><span class="o-t">Galerie öffnen</span><span class="o-n">[29 Bilder]</span><span class="o-a" aria-hidden="true">↓</span></button></div>
-  <div class="bleed" id="sammlung" hidden><div class="collage">
+  <div class="bleed"><div class="collage">
     <figure class="frame" style="--c:1/6;--r:1;--mt:0;--mc:1/7;--rot:-1deg"><img src="img/26f.webp" alt="Der erste Blick am Teich" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:5/8;--r:1;--mt:clamp(28px,4.86vw,70px);--mc:1/4;--rot:2deg"><img src="img/06f.webp" alt="Kuss unter der Trauerweide" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:8/13;--r:1;--mt:clamp(8px,1.39vw,20px);--mc:3/7;--rot:.5deg"><img src="img/25f.webp" alt="Brautpaar während der Trauung, schwarzweiß" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:1/6;--r:2;--mt:clamp(-50px,-3.47vw,-20px);--mc:1/7;--rot:1deg"><img src="img/04f.webp" alt="Einzug des Brautpaars unter Applaus" loading="lazy" width="1600" height="900"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:6/10;--r:2;--mt:clamp(12px,2.08vw,30px);--mc:1/5;--rot:-1.5deg"><img src="img/09f.webp" alt="Brautpaar vor dem geschmückten Tor" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:9/13;--r:2;--mt:clamp(-40px,-2.78vw,-16px);--mc:2/7;--rot:1deg"><img src="img/01f.webp" alt="Eheringe in der Schatulle" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:1/4;--r:3;--mt:clamp(-40px,-2.78vw,-16px);--mc:1/4;--rot:-1.5deg"><img src="img/03f.webp" alt="Unterschrift im Standesamt" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:4/7;--r:3;--mt:clamp(12px,2.08vw,30px);--mc:4/7;--rot:1deg"><img src="img/08f.webp" alt="Bräutigam hebt die Braut hoch" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:7/10;--r:3;--mt:clamp(-20px,-1.39vw,-8px);--mc:1/4;--rot:-1deg"><img src="img/11f.webp" alt="Brautpaar in der Abenddämmerung vor dem Schloss" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:10/13;--r:3;--mt:clamp(28px,4.86vw,70px);--mc:4/7;--rot:2deg"><img src="img/02f.webp" alt="Braut am Tisch im Standesamt" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:1/4;--r:4;--mt:clamp(-50px,-3.47vw,-20px);--mc:1/4;--rot:1deg"><img src="img/07f.webp" alt="Brautpaar auf dem Weg unter der Weide" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
-    <figure class="pair" style="--c:4/9;--r:4;--mt:0;--mc:4/7;--rot:0deg">
+    <figure class="frame" style="--c:6/10;--r:1;--mt:clamp(24px,4.17vw,60px);--mc:1/5;--rot:1deg"><img src="img/25f.webp" alt="Brautpaar während der Trauung, schwarzweiß" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:10/13;--r:1;--mt:clamp(-10px,-0.69vw,-4px);--mc:5/7;--rot:1.5deg"><img src="img/11f.webp" alt="Brautpaar in der Abenddämmerung vor dem Schloss" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:1/5;--r:2;--mt:clamp(-40px,-2.78vw,-16px);--mc:1/5;--rot:1deg"><img src="img/04f.webp" alt="Einzug des Brautpaars unter Applaus" loading="lazy" width="1600" height="900"><figcaption></figcaption></figure>
+    <figure class="pair" style="--c:5/9;--r:2;--mt:0;--mc:2/7;--rot:0deg">
       <div class="two">
         <img src="img/31f.webp" alt="Brautpaar an der Backsteinwand" loading="lazy" width="1200" height="1600">
         <img src="img/32f.webp" alt="Detail: Brautstrauß in der Hand der Braut" loading="lazy" width="1200" height="1600">
       </div>
       <figcaption></figcaption>
     </figure>
-    <figure class="frame" style="--c:9/13;--r:4;--mt:clamp(16px,2.78vw,40px);--mc:1/6;--rot:-1deg"><img src="img/27f.webp" alt="Hände mit Eheringen auf dem Brautstrauß" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:1/7;--r:5;--mt:clamp(-50px,-3.47vw,-20px);--mc:1/7;--rot:.5deg"><img src="img/12f.webp" alt="Hochzeitsgesellschaft am Teich" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:7/10;--r:5;--mt:clamp(-70px,-4.86vw,-28px);--mc:1/4;--rot:-2deg"><img src="img/28f.webp" alt="Gäste springen ausgelassen vor dem Schloss" loading="lazy" width="1200" height="1600"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:9/13;--r:5;--mt:clamp(16px,2.78vw,40px);--mc:4/7;--rot:1.5deg"><img src="img/14f.webp" alt="Gartenfeier am Nachmittag" loading="lazy" width="1600" height="1066"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:1/5;--r:6;--mt:clamp(-30px,-2.08vw,-12px);--mc:1/5;--rot:-1deg"><img src="img/15f.webp" alt="Lachende Gäste am Tisch" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:4/9;--r:6;--mt:clamp(16px,2.78vw,40px);--mc:2/7;--rot:1deg"><img src="img/33f.webp" alt="Gäste lachen zwischen Seifenblasen" loading="lazy" width="1600" height="1066"><figcaption></figcaption></figure>
-    <figure class="frame" style="--c:9/13;--r:6;--mt:clamp(-30px,-2.08vw,-12px);--mc:1/6;--rot:-1.5deg"><img src="img/16f.webp" alt="Handkuss bei der Feier, das Weinglas in der Hand" loading="lazy" width="1600" height="1066"><figcaption></figcaption></figure>
-    <figure class="stack" style="--c:1/4;--r:7;--mt:clamp(-20px,-1.39vw,-8px);--mc:1/4;--rot:.6deg">
-      <div class="strip"><img src="img/29.jpg" alt="Die Braut wirft den Brautstrauß" loading="lazy" width="1600" height="1067"><img src="img/30.jpg" alt="Jubel nach dem Fangen des Brautstraußes" loading="lazy" width="1600" height="1067"></div>
-      <figcaption></figcaption>
-    </figure>
-    <figure class="frame" style="--c:4/7;--r:7;--mt:clamp(20px,3.47vw,50px);--mc:4/7;--rot:-1.5deg"><img src="img/34f.webp" alt="Bräutigam beim Eröffnungstanz" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
-    <figure class="stack" style="--c:7/10;--r:7;--mt:clamp(-10px,-0.69vw,-4px);--mc:1/4;--rot:-.6deg">
+    <figure class="frame" style="--c:9/12;--r:2;--mt:clamp(16px,2.78vw,40px);--mc:5/7;--rot:-2deg"><img src="img/28f.webp" alt="Gäste springen ausgelassen vor dem Schloss" loading="lazy" width="1200" height="1600"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:1/6;--r:3;--mt:clamp(-40px,-2.78vw,-16px);--mc:1/7;--rot:-1deg"><img src="img/33f.webp" alt="Gäste lachen zwischen Seifenblasen" loading="lazy" width="1600" height="1066"><figcaption></figcaption></figure>
+    <figure class="stack" style="--c:6/9;--r:3;--mt:clamp(8px,1.39vw,20px);--mc:1/4;--rot:-.6deg">
       <div class="strip"><img src="img/36.jpg" alt="Brautpaar beim Eröffnungstanz vor den Gästen" loading="lazy" width="1600" height="1067"><img src="img/35.jpg" alt="Drehung beim Eröffnungstanz" loading="lazy" width="1600" height="1067"></div>
       <figcaption></figcaption>
     </figure>
-    <figure class="stack" style="--c:10/13;--r:7;--mt:clamp(24px,4.17vw,60px);--mc:4/7;--rot:.6deg">
+    <figure class="stack" style="--c:9/13;--r:3;--mt:clamp(-30px,-2.08vw,-12px);--mc:4/7;--rot:.6deg">
       <div class="strip"><img src="img/21.jpg" alt="Brautpaar ausgelassen auf der Tanzfläche" loading="lazy" width="1600" height="900"><img src="img/22.jpg" alt="Gäste tanzen im Lichtschein" loading="lazy" width="1600" height="900"><img src="img/24.jpg" alt="Wilde Party zu später Stunde" loading="lazy" width="1600" height="1067"></div>
       <figcaption></figcaption>
     </figure>
-    <figure class="frame" style="--c:6/12;--r:8;--mt:clamp(8px,1.39vw,20px);--mc:2/7;--rot:1deg"><img src="img/23f.webp" alt="Gäste feiern Arm in Arm" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+  </div></div>
+  <div class="bleed"><button class="opener" type="button" aria-expanded="false" aria-controls="sammlung"><span class="o-t">Den ganzen Tag ansehen</span><span class="o-n">[16 weitere Bilder]</span><span class="o-a" aria-hidden="true">↓</span></button></div>
+  <div class="bleed" id="sammlung" hidden><div class="collage">
+    <figure class="frame" style="--c:1/6;--r:1;--mt:0;--mc:1/7;--rot:-1deg"><img src="img/01f.webp" alt="Eheringe in der Schatulle" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:5/8;--r:1;--mt:clamp(28px,4.86vw,70px);--mc:1/4;--rot:2deg"><img src="img/03f.webp" alt="Unterschrift im Standesamt" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:8/13;--r:1;--mt:clamp(8px,1.39vw,20px);--mc:4/7;--rot:.5deg"><img src="img/02f.webp" alt="Braut am Tisch im Standesamt" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:1/6;--r:2;--mt:clamp(-40px,-2.78vw,-16px);--mc:1/5;--rot:-1.5deg"><img src="img/09f.webp" alt="Brautpaar vor dem geschmückten Tor" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:6/9;--r:2;--mt:clamp(12px,2.08vw,30px);--mc:5/7;--rot:1deg"><img src="img/06f.webp" alt="Kuss unter der Trauerweide" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:9/12;--r:2;--mt:clamp(-20px,-1.39vw,-8px);--mc:1/4;--rot:-1deg"><img src="img/08f.webp" alt="Bräutigam hebt die Braut hoch" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:1/4;--r:3;--mt:clamp(-50px,-3.47vw,-20px);--mc:4/7;--rot:1deg"><img src="img/07f.webp" alt="Brautpaar auf dem Weg unter der Weide" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:4/9;--r:3;--mt:0;--mc:1/6;--rot:-1deg"><img src="img/27f.webp" alt="Hände mit Eheringen auf dem Brautstrauß" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:8/13;--r:3;--mt:clamp(16px,2.78vw,40px);--mc:1/7;--rot:.5deg"><img src="img/12f.webp" alt="Hochzeitsgesellschaft am Teich" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:1/6;--r:4;--mt:clamp(-30px,-2.08vw,-12px);--mc:1/5;--rot:1.5deg"><img src="img/14f.webp" alt="Gartenfeier am Nachmittag" loading="lazy" width="1600" height="1066"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:5/9;--r:4;--mt:clamp(16px,2.78vw,40px);--mc:4/7;--rot:-1deg"><img src="img/15f.webp" alt="Lachende Gäste am Tisch" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:9/13;--r:4;--mt:clamp(-30px,-2.08vw,-12px);--mc:1/6;--rot:-1.5deg"><img src="img/16f.webp" alt="Handkuss bei der Feier, das Weinglas in der Hand" loading="lazy" width="1600" height="1066"><figcaption></figcaption></figure>
+    <figure class="stack" style="--c:1/4;--r:5;--mt:clamp(-20px,-1.39vw,-8px);--mc:1/4;--rot:.6deg">
+      <div class="strip"><img src="img/29.jpg" alt="Die Braut wirft den Brautstrauß" loading="lazy" width="1600" height="1067"><img src="img/30.jpg" alt="Jubel nach dem Fangen des Brautstraußes" loading="lazy" width="1600" height="1067"></div>
+      <figcaption></figcaption>
+    </figure>
+    <figure class="frame" style="--c:4/7;--r:5;--mt:clamp(20px,3.47vw,50px);--mc:4/7;--rot:-1.5deg"><img src="img/34f.webp" alt="Bräutigam beim Eröffnungstanz" loading="lazy" width="1067" height="1600"><figcaption></figcaption></figure>
+    <figure class="frame" style="--c:7/13;--r:5;--mt:0;--mc:2/7;--rot:1deg"><img src="img/23f.webp" alt="Gäste feiern Arm in Arm" loading="lazy" width="1600" height="1067"><figcaption></figcaption></figure>
   </div></div>
 </section>
 
@@ -443,7 +446,7 @@ html.lenis,html.lenis body{height:auto}
     els.forEach(function(el){el._ch=prep(el);io.observe(el)});
   })();
   (function(){var b=document.querySelector('.opener'),g=document.getElementById('sammlung');if(!b||!g)return;
-    b.addEventListener('click',function(){var o=g.hidden;g.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');b.querySelector('.o-t').textContent=o?'Galerie schließen':'Galerie öffnen';
+    b.addEventListener('click',function(){var o=g.hidden;g.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');b.querySelector('.o-t').textContent=o?'Weniger zeigen':'Den ganzen Tag ansehen';
       if(!o){var r=document.getElementById('bilder').getBoundingClientRect();if(r.top<0)window.scrollTo({top:window.scrollY+r.top-60})}
       window.dispatchEvent(new Event('resize'));if(o&&window.__fixCaps)setTimeout(window.__fixCaps,50)});
   })();
