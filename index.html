@@ -299,6 +299,9 @@ html.lenis,html.lenis body{height:auto}
 .intro.bg-hero .cta{background:#f2efe8;color:var(--ink)!important;border:0!important;text-shadow:none!important;padding:11px 16px 10px;display:inline-block;box-shadow:0 10px 30px -10px rgba(0,0,0,.45)}
 .intro.bg-hero .cta::after{content:" →"}
 @media(hover:hover){.bar .top-cta:hover,.intro.bg-hero .cta:hover{transform:scale(1.06)}}
+
+.card-wide{grid-column:1/-1}
+@media(min-width:900px){.card-wide .cw{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:end}.card-wide .cw ul{border-top:0;padding-top:0}}
 </style>
 </head>
 <body>
@@ -385,6 +388,7 @@ html.lenis,html.lenis body{height:auto}
 <section class="bleed bgimg field bg-rosen" id="begleitung">
   <div class="head"><span class="no">[04]</span><h2>Pakete <em>für euren Tag</em></h2><span class="tiny">Ohne Stoppuhr</span></div>
   <div class="cards">
+    <div class="card card-wide rise" style="--rot:.4deg"><div class="top tiny"><span>Zu jedem Paket dazu</span></div><div class="cw"><h3>Vor dem Ja-Wort <em>Getting Ready &amp; Zeit zu zweit</em></h3><ul><li>Getting Ready</li><li>Paar-Shooting vor der Trauung</li><li>Details: Kleid, Ringe, Strauß</li><li class="std">ca. 1–2 Stunden früher vor Ort</li></ul></div></div>
     <div class="card rise" style="--rot:-.8deg"><div class="top tiny"><span>Paket 1/3</span></div><h3>Ja-Wort <em>Trauung &amp; Empfang</em></h3><ul><li>Trauung</li><li>Sektempfang</li><li>Paar- &amp; Gruppenfotos</li><li class="std">ca. 5 Stunden vor Ort</li></ul></div>
     <div class="card rise" style="--rot:.6deg"><div class="top tiny"><span>Paket 2/3</span></div><h3>Bis zum Abend <em>mit Feier</em></h3><ul><li>Kaffee &amp; Kuchen</li><li>Reden &amp; Programm</li><li>Feier bis in den Abend</li><li class="std">ca. 7 Stunden vor Ort</li></ul></div>
     <div class="card rise" style="--rot:-.4deg"><div class="top tiny"><span>Paket 3/3</span></div><h3>Bis zur Party <em>der ganze Tag</em></h3><ul><li>Dinner</li><li>Eröffnungstanz</li><li>Party</li><li class="std">ca. 10 Stunden vor Ort</li></ul></div>
@@ -394,7 +398,6 @@ html.lenis,html.lenis body{height:auto}
       <li><b>Immer dabei:</b> Auswahl, Bearbeitung, Online-Galerie, Anfahrt in der Region.</li>
       <li><b>Eure Galerie</b> nach wenigen Tagen bis zu einem Monat, je nach Umfang.</li>
       <li><b>Foto, Film oder beides.</b></li>
-      <li><b>Gern auch früher:</b> beim Getting Ready oder für ein paar Minuten zu zweit vor der Trauung.</li>
       <li><b>Keine Anzahlung.</b></li>
       <li><b>Euren Preis</b> bekommt ihr im persönlichen Angebot.</li>
     </ul>
