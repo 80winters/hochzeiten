@@ -205,7 +205,6 @@ footer a:hover{color:var(--ink)}
   .steps li{transform-origin:left center}
   .steps li.focus{scale:1.035}
   .card.focus{scale:1.05;z-index:2;box-shadow:0 0 22px rgba(18,17,16,.1),0 24px 36px -24px rgba(18,17,16,.4)}
-  .collage figure.focus{z-index:5;transform:rotate(0) scale(1.03)}
 }
 /* Weiches Scrollen (Lenis, wie Messeseite, nur Maus/Trackpad) */
 html.lenis,html.lenis body{height:auto}
@@ -411,7 +410,7 @@ html.lenis,html.lenis body{height:auto}
   (function(){
     if(!window.matchMedia('(hover: none)').matches||!('IntersectionObserver' in window))return;
     var io=new IntersectionObserver(function(es){es.forEach(function(en){en.target.classList.toggle('focus',en.isIntersecting)})},{rootMargin:'-42% 0px -42% 0px',threshold:0});
-    document.querySelectorAll('.steps li, .card, .collage figure').forEach(function(el){io.observe(el)});
+    document.querySelectorAll('.steps li, .card').forEach(function(el){io.observe(el)});
   })();
   (function(){
     var figs=[].slice.call(document.querySelectorAll('#bilder .collage figure'));
