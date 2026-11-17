@@ -241,6 +241,9 @@ footer a:hover{color:var(--ink)}
 @media(max-width:999px){.intro .o-pic{margin-top:clamp(32px,6vw,56px)}}
 #bilder{padding-top:clamp(28px,4vw,64px)}
 .card li.std{font-weight:700;margin-top:6px}
+/* Parallax: Hintergründe liegen „weiter weg“ und laufen langsamer mit */
+.bgimg{position:relative;overflow:hidden;isolation:isolate}
+.bgimg::before{content:"";position:absolute;left:0;right:0;top:-25%;bottom:-25%;background:inherit;background-size:cover;background-position:center;background-repeat:no-repeat;transform:translate3d(0,var(--py,0px),0);z-index:-1;will-change:transform;pointer-events:none}
 /* Weiches Scrollen (Lenis, wie Messeseite, nur Maus/Trackpad) */
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
@@ -370,7 +373,7 @@ html.lenis,html.lenis body{height:auto}
   </div>
 </section>
 
-<section class="bleed grain" id="kontakt">
+<section class="bleed grain bgimg" id="kontakt">
   <div class="contact">
     <p class="tiny">[06] Kontakt</p>
     <h2>Erzählt uns <em>von eurem Tag.</em></h2>
@@ -456,6 +459,14 @@ html.lenis,html.lenis body{height:auto}
       var hit=figs.some(function(o){if(o===fig)return false;var q=o.getBoundingClientRect();return r.left<q.right&&r.left+60>q.left&&r.top<q.bottom&&r.bottom>q.top});
       if(hit)c.style.visibility='hidden'})}
     window.__fixCaps=fix;fix();window.addEventListener('resize',function(){clearTimeout(window.__fc);window.__fc=setTimeout(fix,200)});
+  })();
+  (function(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var secs=[].slice.call(document.querySelectorAll('.bgimg')),tick=false;
+    function upd(){tick=false;var vh=window.innerHeight;secs.forEach(function(el){var r=el.getBoundingClientRect();if(r.bottom<-200||r.top>vh+200)return;
+      var off=(r.top+r.height/2)-vh/2;var py=-off*0.2;var lim=r.height*0.24;if(py>lim)py=lim;if(py<-lim)py=-lim;el.style.setProperty('--py',py.toFixed(1)+'px')})}
+    window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
+    window.addEventListener('resize',upd);upd();
   })();
   var els=document.querySelectorAll('.rise');
   if('IntersectionObserver' in window){
