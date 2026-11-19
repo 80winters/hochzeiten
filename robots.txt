@@ -1,2 +1,25 @@
+# Link-Vorschauen erlauben (Facebook, WhatsApp, LinkedIn, X, Telegram, iMessage), Suchmaschinen weiter draußen.
+# Die Seite hat zusätzlich <meta name="robots" content="noindex,nofollow">.
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
 User-agent: *
 Disallow: /
